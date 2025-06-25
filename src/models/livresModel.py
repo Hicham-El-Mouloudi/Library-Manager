@@ -37,7 +37,7 @@ class LivresModel:
     def loadData(self):
         # Load the books from "livres.jsonn"
         try:
-            with open('data/livres.json', 'r') as file:
+            with open('data/livres.json', 'r', encoding="utf-8") as file: # utf-8 pour afficher correctement des characters spec (é...etc)
                 self._livres = load(file)
         except FileNotFoundError:
             self._livres = []
