@@ -17,8 +17,15 @@ class LivresView :
         self.initUI()
 
     def initUI(self):
-        # TODO: 
-
+        # TODO: 1 add frame for books visualisation at top of the view
+        booksVisualisationFrame = Frame(self._frame, bg="lightblue", height=200)
+        booksVisualisationFrame.pack(fill='x', padx=10, pady=10)
+        # TODO: 2 add frame for books search under the visualisation frame
+        searchFrame = Frame(self._frame, bg="lightgreen", height=100)
+        searchFrame.pack(fill='both', padx=10, pady=10)
+        # TODO: 3 add frame for books management (add) under the search frame
+        managementFrame = Frame(self._frame, bg="lightcoral")
+        managementFrame.pack(fill='both', padx=10, pady=10, expand=True)
         return self._frame
 
     def getUI(self):
