@@ -101,8 +101,29 @@ class LivresModel:
             self._livres = []
     
     def searchLivre(self, filter = LivreRechercheFiltre.Titre, value=None):
-        # TODO : Search for a book by its ISBN
-        pass
+        match(filter):
+            # par titre
+            case LivreRechercheFiltre.Titre:
+                for livre in self._livres:
+                    if livre['titre'].lower() == value.lower():
+                        return livre
+            # par auteur
+            case LivreRechercheFiltre.Auteur:
+                for livre in self._livres:
+                    if livre['auteur'].lower() == value.lower():
+                        return livre
+            # par annee
+            case LivreRechercheFiltre.Annee:
+                for livre in self._livres:
+                    if livre['annee'] == value:
+                        return livre
+            # par genre
+            case LivreRechercheFiltre.Genre:
+                for livre in self._livres:
+                    if livre['genre'].lower() == value.lower():
+                        return livre
+            case _:
+                raise ValueError("Invalid filter type provided.")
 
     def addLivre(self, livre):
         # TODO : Add a book to the list of books
