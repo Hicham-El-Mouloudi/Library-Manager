@@ -1,6 +1,7 @@
 # standard libs
-from json import *
+from json import load, dump
 from enum import Enum
+# custom imports
 
 
 
@@ -92,8 +93,12 @@ class LivresModel:
         self.loadData()
 
     def loadData(self):
-        # TODO : Load the books from a JSON file "livres.json"
-        pass
+        # Load the books from "livres.jsonn"
+        try:
+            with open('data/livres.json', 'r') as file:
+                self._livres = load(file)
+        except FileNotFoundError:
+            self._livres = []
     
     def searchLivre(self, filter = LivreRechercheFiltre.Titre, value=None):
         # TODO : Search for a book by its ISBN
@@ -112,8 +117,9 @@ class LivresModel:
         pass
 
     def saveData(self):
-        # TODO : Save the books to a JSON file "livres.json"
-        pass
+        # Save the books to "livres.json"
+        with open('data/livres.json', 'w') as file:
+            dump(self._livres, file, indent=4)
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
