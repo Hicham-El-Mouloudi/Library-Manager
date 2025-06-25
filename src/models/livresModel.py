@@ -140,8 +140,11 @@ class LivresModel:
         })
 
     def deleteLivre(self, livre):
-        # TODO : Delete a book from the list of books
-        pass
+        livreToDelete = self.searchLivre(LivreRechercheFiltre.Titre, livre.titre)
+        if livreToDelete:
+            self._livres.remove(livreToDelete) # 'livreToDelete' a meme reference que 'livre' donc on peut le supprimer directement
+        else:
+            raise ValueError("Livre not found in the list.")
 
     def listerLivres(self, filter=None, value=None): # if filter is None, list all books other
         # TODO : List all the books in the list of books
