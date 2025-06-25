@@ -146,9 +146,9 @@ class LivresModel:
         else:
             raise ValueError("Livre not found in the list.")
 
-    def listerLivres(self, filter=None, value=None): # if filter is None, list all books other
-        # TODO : List all the books in the list of books
-        pass
+    def listerLivres(self):
+        # Return a list of all books
+        return self._livres
 
     def saveData(self):
         # Save the books to "livres.json"
