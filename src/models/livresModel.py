@@ -107,27 +107,37 @@ class LivresModel:
                 for livre in self._livres:
                     if livre['titre'].lower() == value.lower():
                         return livre
+                return False
             # par auteur
             case LivreRechercheFiltre.Auteur:
                 for livre in self._livres:
                     if livre['auteur'].lower() == value.lower():
                         return livre
+                return False
             # par annee
             case LivreRechercheFiltre.Annee:
                 for livre in self._livres:
                     if livre['annee'] == value:
                         return livre
+                return False
             # par genre
             case LivreRechercheFiltre.Genre:
                 for livre in self._livres:
                     if livre['genre'].lower() == value.lower():
                         return livre
+                return False
             case _:
                 raise ValueError("Invalid filter type provided.")
 
     def addLivre(self, livre):
-        # TODO : Add a book to the list of books
-        pass
+        self._livres.append({
+            'isbn': livre.isbn,
+            'titre': livre.titre,
+            'auteur': livre.auteur,
+            'annee': livre.annee,
+            'genre': livre.genre,
+            'statut': livre.statut
+        })
 
     def deleteLivre(self, livre):
         # TODO : Delete a book from the list of books
