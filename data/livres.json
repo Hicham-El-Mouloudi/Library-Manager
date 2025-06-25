@@ -1,0 +1,42 @@
+[
+    {
+        "ISBN": "978-0140449136",
+        "titre": "L'Étranger",
+        "auteur": "Albert Camus",
+        "annee": "1942",
+        "genre": "Roman",
+        "statut": "disponible"
+    },
+    {
+        "ISBN": "978-2070368228",
+        "titre": "Le Petit Prince",
+        "auteur": "Antoine de Saint-Exupéry",
+        "annee": "1943",
+        "genre": "Conte",
+        "statut": "emprunté"
+    },
+    {
+        "ISBN": "978-2253002023",
+        "titre": "Les Misérables",
+        "auteur": "Victor Hugo",
+        "annee": "1862",
+        "genre": "Roman historique",
+        "statut": "disponible"
+    },
+    {
+        "ISBN": "978-2070413119",
+        "titre": "Madame Bovary",
+        "auteur": "Gustave Flaubert",
+        "annee": "1857",
+        "genre": "Roman",
+        "statut": "disponible"
+    },
+    {
+        "ISBN": "978-2253083473",
+        "titre": "Germinal",
+        "auteur": "Émile Zola",
+        "annee": "1885",
+        "genre": "Roman",
+        "statut": "emprunté"
+    }
+]
