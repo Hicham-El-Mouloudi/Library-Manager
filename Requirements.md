@@ -21,6 +21,7 @@
 - Ajouter/supprimer un livre (ISBN, titre, auteur, année, genre, statut)
 - Lister tous les livres
 - Rechercher un livre
+- Souvegarder l'état des livres dans un fichier `.json`
 
 ## 2. Gestion des Membres
 - Enregistrer un membre (ID, nom)

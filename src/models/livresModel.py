@@ -110,6 +110,10 @@ class LivresModel:
     def listerLivres(self, filter=None, value=None): # if filter is None, list all books other
         # TODO : List all the books in the list of books
         pass
+
+    def saveData(self):
+        # TODO : Save the books to a JSON file "livres.json"
+        pass
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
