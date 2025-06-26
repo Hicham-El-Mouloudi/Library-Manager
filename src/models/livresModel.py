@@ -82,6 +82,7 @@ class LivresModel:
         })
 
     def deleteLivres(self, lesIndiceDesLivreASupprimer): # supprimer a partir d'un intervalle de lignes
+        lesIndiceDesLivreASupprimer = sorted(lesIndiceDesLivreASupprimer, reverse=True)
         for indice in lesIndiceDesLivreASupprimer : 
             if not(indice < 0 or indice >= len(self._livres)):
                 self._livres.pop(indice)
