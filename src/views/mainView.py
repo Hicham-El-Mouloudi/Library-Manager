@@ -21,9 +21,9 @@ class MainView:
         
         # create the different views for each tab
         self._livresView = LivresView(self._root, self._bibliotheque)
-        self._empruntsView = EmpruntsView(self._root)
-        self._membresView = MembresView(self._root)
-        self._statistiquesView = StatistiquesView(self._root)
+        self._empruntsView = EmpruntsView(self._root, self._bibliotheque)
+        self._membresView = MembresView(self._root, self._bibliotheque)
+        self._statistiquesView = StatistiquesView(self._root, self._bibliotheque)
         # 
         self.initUI()
     def initUI(self):
