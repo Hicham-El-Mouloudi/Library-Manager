@@ -70,7 +70,12 @@ class LivresView :
         )
         addButton.pack(side='top', padx=5, pady=5)
         # # saving the books to the JSON file
-        saveButton = Button(bookAddFrame, width=36, text="Enregistrer Les Livres", command=lambda: self._model.saveData())
+        saveButton = Button(
+            bookAddFrame,
+            width=36,
+            text="Enregistrer Les Livres",
+            command=lambda: (self._model.saveData(), messagebox.showinfo("Livres", "Les livres ont été sauvegardés avec succès !"))
+        )
         saveButton.pack(side='right', padx=5, pady=5)
         return self._frame
 
