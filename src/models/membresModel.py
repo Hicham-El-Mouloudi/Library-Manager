@@ -1,10 +1,21 @@
 # standard libs
 from json import load, dump
+from enum import Enum
 # custom imports
 from models.Membre import Membre
 
 
-
+# ----------------------------------------------------------------------------------------
+# ------------------------------------ MembreRechercheFiltre ------------------------------------
+# ----------------------------------------------------------------------------------------
+# Enum to define the different filters for searching members
+class MembreRechercheFiltre(Enum): # C'est pas encore utilisé !!!!!!!!
+    Id = "id"
+    Nom = "nom"
+    # TODO: Add more filters if needed
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 
 
 
@@ -16,6 +27,10 @@ class MembresModel:
     def __init__(self):
         self._membres = None
         self.loadData()  # Load members from "membres.json"
+
+    def searchMembre(self, filter=MembreRechercheFiltre.Id, value=None):
+        # TODO: Implement search logic for members based on filter
+        pass
 
     def loadData(self):
         # Load the members from "membres.json"
