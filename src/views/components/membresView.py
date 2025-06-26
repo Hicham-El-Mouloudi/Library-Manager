@@ -1,4 +1,8 @@
+# standard library imports
 from tkinter import *
+from tkinter import ttk, messagebox
+# custom imports
+from models.membresModel import MembresModel
 
 
 if __name__ == "__main__":
