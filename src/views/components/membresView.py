@@ -72,7 +72,7 @@ class MembresView:
         return self._frame
 
     def afficherMembres(self, tableMembres):
-        tableLivres.set_children("") # clear the table first
+        tableMembres.set_children("") # clear the table first
         for membre in self._model.listerMembres():
             # Format the list of borrowed books as a comma-separated string
             livresEmpruntes = ', '.join(membre.get('lesLivresEmpruntes', []))
