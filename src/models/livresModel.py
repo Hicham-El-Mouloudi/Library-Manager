@@ -81,12 +81,13 @@ class LivresModel:
             'statut': livre.statut
         })
 
-    def deleteLivre(self, livre):
-        livreToDelete = self.searchLivre(LivreRechercheFiltre.Titre, livre.titre)
-        if livreToDelete:
-            self._livres.remove(livreToDelete) # 'livreToDelete' a meme reference que 'livre' donc on peut le supprimer directement
-        else:
-            raise ValueError("Livre not found in the list.")
+    def deleteLivres(self, lesIndiceDesLivreASupprimer): # supprimer a partir d'un intervalle de lignes
+        for indice in lesIndiceDesLivreASupprimer : 
+            if not(indice < 0 or indice >= len(self._livres)):
+                self._livres.pop(indice)
+            else:
+                raise ValueError("Livre not found in the list.")
+        return self._livres
 
     def listerLivres(self):
         # Return a list of all books

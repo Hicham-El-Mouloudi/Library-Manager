@@ -1,6 +1,6 @@
 # standard library imports
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 # custom imports
 from models.livresModel import LivresModel
 
@@ -18,7 +18,7 @@ class LivresView :
         self.initUI()
 
     def initUI(self):
-        # lister les livres
+        # ---------------- lister les livres
         booksVisualisationFrame = Frame(self._frame, bg="lightblue", height=200)
         booksVisualisationFrame.pack(fill='x', padx=10, pady=10)
         # # adding a treeView to list books
@@ -29,8 +29,7 @@ class LivresView :
             tableLivres.heading(clmn, text=clmn) # adding labels to columns
             tableLivres.column(clmn, width=100) # confihuring each column
         # # # adding books to the treeView
-        for livre in self._model.listerLivres() : 
-            tableLivres.insert("", "end", values = list(livre.values()))
+        self.afficherLivres(tableLivres)
         # # # # Add scrollbar
         scrollbar = ttk.Scrollbar(booksVisualisationFrame, orient="vertical", command=tableLivres.yview)
         tableLivres.configure(yscrollcommand=scrollbar.set)
@@ -39,9 +38,12 @@ class LivresView :
         tableLivres.pack(fill="both", expand=True)
 
 
-        # TODO: 2 add frame for books search under the visualisation frame
-        searchFrame = Frame(self._frame, bg="lightgreen", height=100)
-        searchFrame.pack(fill='both', padx=10, pady=10)
+        # ---------------- deleting a book
+        deleteFrame = Frame(self._frame, bg="lightgreen", height=100)
+        deleteFrame.pack(fill='both', padx=10, pady=10)
+        # the button to del -> binding it to delete the selected livres
+        deleteButton = Button(deleteFrame, width=36, text="Supprimer Les Elements Selectionnés", command= lambda : self.validerSuppression(tableLivres))
+        deleteButton.pack()
 
 
         # TODO: 3 add frame for books management (add) under the search frame
@@ -51,3 +53,22 @@ class LivresView :
 
     def getUI(self):
         return self._frame
+    
+    # 
+    def afficherLivres(self, tableLivres):
+        tableLivres.set_children("")
+        for livre in self._model.listerLivres() : 
+            tableLivres.insert("", "end", values = list(livre.values()))
+
+    def validerSuppression(self,tableLivres) :
+        selected = tableLivres.selection() # liste des ID des lignes selectionnée
+        if len(selected) == 0 : # the user does not select any -> show alert
+            messagebox.showerror("Erreur","Vous devez selectionner des entrées a supprimer")
+            return
+        #verifier si l'utilisateur veut vraiment la supprimmer
+        response = messagebox.askyesno("Confirmation De Suppression", "Est-ce que vous voulez vraiment supprimer les livres selectionnés ?")
+        if response : 
+            lesIndiceDesLivreASupprimer = [tableLivres.index(indx) for indx in selected] # obtenir les indices des lignes selectionées, à partir des ID obtnue par 'selected'
+            self._model.deleteLivres(lesIndiceDesLivreASupprimer)
+            self.afficherLivres(tableLivres) # re-afficher apres suppression 
+        # sinon ignoreer
