@@ -1,0 +1,52 @@
+[
+    {
+        "id": "M001",
+        "nom": "Dupont Alice",
+        "lesLivresEmpruntes": ["978-0140449136", "978-2070368228"]
+    },
+    {
+        "id": "M002",
+        "nom": "Martin Jean",
+        "lesLivresEmpruntes": ["978-2253002023"]
+    },
+    {
+        "id": "M003",
+        "nom": "Bernard Claire",
+        "lesLivresEmpruntes": []
+    },
+    {
+        "id": "M004",
+        "nom": "Petit Luc",
+        "lesLivresEmpruntes": ["978-2070413119"]
+    },
+    {
+        "id": "M005",
+        "nom": "Robert Emma",
+        "lesLivresEmpruntes": ["978-2253083473", "978-0140449136"]
+    },
+    {
+        "id": "M006",
+        "nom": "Richard Paul",
+        "lesLivresEmpruntes": []
+    },
+    {
+        "id": "M007",
+        "nom": "Durand Sophie",
+        "lesLivresEmpruntes": ["978-2070368228"]
+    },
+    {
+        "id": "M008",
+        "nom": "Lefevre Hugo",
+        "lesLivresEmpruntes": []
+    },
+    {
+        "id": "M009",
+        "nom": "Moreau Julie",
+        "lesLivresEmpruntes": ["978-2253002023", "978-2070413119"]
+    },
+    {
+        "id": "M010",
+        "nom": "Simon Louis",
+        "lesLivresEmpruntes": []
+    }
+]

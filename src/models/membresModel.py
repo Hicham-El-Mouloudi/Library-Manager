@@ -72,7 +72,7 @@ class MembresModel:
             }
         )
 
-    def deleteMembre(self, lesIndiceDesLivreASupprimer):
+    def deleteMembres(self, lesIndiceDesLivreASupprimer):
         lesIndiceDesLivreASupprimer = sorted(lesIndiceDesLivreASupprimer, reverse=True)
         for index in lesIndiceDesLivreASupprimer:
             if 0 <= index < len(self._membres):
