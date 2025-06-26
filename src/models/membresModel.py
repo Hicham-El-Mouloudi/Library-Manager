@@ -26,8 +26,13 @@ class MembresModel:
             self._membres = []
 
     def addMembre(self, membre):
-        # TODO: Add a new member to the list
-        pass
+        self._membres.append(
+            {
+                "id": membre.id,
+                "nom": membre.nom,
+                "emprunts": [] # the "emrunts" are not added when adding a new member
+            }
+        )
 
     def deleteMembre(self, membre):
         # TODO: Delete a member from the list
