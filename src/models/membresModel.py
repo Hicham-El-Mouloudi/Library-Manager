@@ -44,12 +44,13 @@ class MembresModel:
         return self._membres
 
     def listerMembres(self):
-        # TODO: Return a list of all members
-        pass
+        # Return a list of members
+        return self._membres
 
     def saveData(self):
-        # TODO: Save the members to "membres.json"
-        pass
+        # Save the members to "membres.json"
+        with open('data/membres.json', 'w', encoding="utf-8") as file:
+            dump(self._membres, file, ensure_ascii=False, indent=4)
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
