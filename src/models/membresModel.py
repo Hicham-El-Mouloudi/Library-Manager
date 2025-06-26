@@ -34,9 +34,14 @@ class MembresModel:
             }
         )
 
-    def deleteMembre(self, membre):
-        # TODO: Delete a member from the list
-        pass
+    def deleteMembre(self, lesIndiceDesLivreASupprimer):
+        lesIndiceDesLivreASupprimer = sorted(lesIndiceDesLivreASupprimer, reverse=True)
+        for index in lesIndiceDesLivreASupprimer:
+            if 0 <= index < len(self._membres):
+                self._membres.pop(index)
+            else:
+                raise IndexError(f"Index {index} is out of range for the members list.")
+        return self._membres
 
     def listerMembres(self):
         # TODO: Return a list of all members

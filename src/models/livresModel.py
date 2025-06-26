@@ -88,7 +88,7 @@ class LivresModel:
             if not(indice < 0 or indice >= len(self._livres)):
                 self._livres.pop(indice)
             else:
-                raise ValueError("Livre not found in the list.")
+                raise IndexError(f"Index {indice} is out of range for the books list.")
         return self._livres
 
     def listerLivres(self):
