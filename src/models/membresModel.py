@@ -6,13 +6,24 @@ from models.Membre import Membre
 
 
 # ----------------------------------------------------------------------------------------
+# ------------------------------------ MembreInexistantError ------------------------------------
+# ----------------------------------------------------------------------------------------
+# Custom exception for handling cases where a member does not exist
+class MembreInexistantError(Exception):
+    def __init__(self, message="Le membre n'existe pas dans les données disponibles."):
+        self.message = message
+        super().__init__(self.message)
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------
 # ------------------------------------ MembreRechercheFiltre ------------------------------------
 # ----------------------------------------------------------------------------------------
 # Enum to define the different filters for searching members
 class MembreRechercheFiltre(Enum): # C'est pas encore utilisé !!!!!!!!
     Id = "id"
     Nom = "nom"
-    # TODO: Add more filters if needed
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
@@ -28,9 +39,21 @@ class MembresModel:
         self._membres = None
         self.loadData()  # Load members from "membres.json"
 
-    def searchMembre(self, filter=MembreRechercheFiltre.Id, value=None):
-        # TODO: Implement search logic for members based on filter
-        pass
+    def searchMembre(self, filter=MembreRechercheFiltre.Id, value=None): # cette fct est utilisées dans la vue empruntsView.py pour rechercher un membre par son ID ou nom.
+        # Cette fonction n'est pas utilisée encore, mais elle est prête pour une utilisation future.
+        match(filter):
+            case MembreRechercheFiltre.Id:
+                for membre in self._membres:
+                    if membre['id'].lower() == value.lower():
+                        return membre
+                raise MembreInexistantError(f"Le membre avec l'ID '{value}' n'existe pas dans les données disponibles.")
+            case MembreRechercheFiltre.Nom:
+                for membre in self._membres:
+                    if membre['nom'].lower() == value.lower():
+                        return membre
+                raise MembreInexistantError(f"Le membre avec le nom '{value}' n'existe pas dans les données disponibles.")
+            case _:
+                raise ValueError("Invalid filter type provided.")
 
     def loadData(self):
         # Load the members from "membres.json"

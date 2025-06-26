@@ -54,7 +54,7 @@ class LivresModel:
         except FileNotFoundError:
             self._livres = []
     
-    def searchLivre(self, filter = LivreRechercheFiltre.Titre, value=None): # Cette fonction n'est pas utilisée encore, mais elle est prête pour une utilisation future.
+    def searchLivre(self, filter = LivreRechercheFiltre.Titre, value=None): # cette fct est utilisées dans la vue empruntsView.py pour rechercher un livre par son titre, isbn.
         match(filter):
             # par titre
             case LivreRechercheFiltre.ISBN:
