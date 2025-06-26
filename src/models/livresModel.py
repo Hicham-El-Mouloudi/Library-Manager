@@ -10,7 +10,7 @@ from models.Livre import Livre
 # ------------------------------------ LivreRechercheFiltre ------------------------------------
 # ----------------------------------------------------------------------------------------
 # Enum to define the different filters for searching books
-class LivreRechercheFiltre(Enum):
+class LivreRechercheFiltre(Enum): # C'est pas encore utilisé !!!!!!!!
     Titre = "titre"
     Auteur = "auteur"
     Annee = "annee"

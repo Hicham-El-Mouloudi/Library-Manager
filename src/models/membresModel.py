@@ -14,12 +14,16 @@ from models.Membre import Membre
 # ----------------------------------------------------------------------------------------
 class MembresModel:
     def __init__(self):
-        # TODO: Initialize the model with an empty list of members
-        pass
+        self._membres = None
+        self.loadData()  # Load members from "membres.json"
 
     def loadData(self):
-        # TODO: Load the members from "membres.json"
-        pass
+        # Load the members from "membres.json"
+        try:
+            with open('data/membres.json', 'r', encoding="utf-8") as file:  # utf-8 for special characters
+                self._membres = load(file)
+        except FileNotFoundError:
+            self._membres = []
 
     def addMembre(self, membre):
         # TODO: Add a new member to the list
