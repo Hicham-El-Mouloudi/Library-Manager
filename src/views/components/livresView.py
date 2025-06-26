@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import ttk, messagebox
 # custom imports
 from models.livresModel import LivresModel
+from models.Livre import Livre
 
 
 if __name__ == "__main__":
@@ -46,9 +47,32 @@ class LivresView :
         deleteButton.pack()
 
 
-        # TODO: 3 add frame for books management (add) under the search frame
-        managementFrame = Frame(self._frame, bg="lightcoral")
-        managementFrame.pack(fill='both', padx=10, pady=10, expand=True)
+        # TODO: implementing fields for adding new books
+        # ---------------- adding a book
+        bookAddFrame = Frame(self._frame, bg="lightcoral")
+        bookAddFrame.pack(fill='both', padx=10, pady=10, expand=True)
+        # the labels and entries for adding a book
+        labels = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre', 'Statut']
+        self._entries = {}
+        for label in labels:
+            f = Frame(bookAddFrame, bg="lightcoral")
+            f.pack(side='top', padx=5, pady=5)
+            lbl = Label(f, text=label, width=10)
+            lbl.pack(side='left', padx=5, pady=5)
+            entry = Entry(f, width=40)
+            entry.pack(side='left', padx=5, pady=5)
+            self._entries[label] = entry
+        # the button to add a book
+        addButton = Button(
+            bookAddFrame,
+            width=36,
+            text="Ajouter Un Livre",
+            command= lambda: self.ajouterLivre(tableLivres, self._entries.values())
+        )
+        addButton.pack(side='top', padx=5, pady=5)
+        # # saving the books to the JSON file
+        saveButton = Button(bookAddFrame, width=36, text="Enregistrer Les Livres", command=lambda: self._model.saveData())
+        saveButton.pack(side='right', padx=5, pady=5)
         return self._frame
 
     def getUI(self):
@@ -72,3 +96,21 @@ class LivresView :
             self._model.deleteLivres(lesIndiceDesLivreASupprimer)
             self.afficherLivres(tableLivres) # re-afficher apres suppression 
         # sinon ignoreer
+
+    def ajouterLivre(self, tableLivres, _entries):
+        if any(entry.get() == "" for entry in self._entries.values()):
+            messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
+            return
+        self._model.addLivre(Livre(
+            self._entries['ISBN'].get(),
+            self._entries['Titre'].get(),
+            self._entries['Auteur'].get(),
+            self._entries['Année'].get(),
+            self._entries['Genre'].get(),
+            self._entries['Statut'].get()
+        ))
+        messagebox.showinfo("Succès", "Livre ajouté avec succès")
+        # vider les champs
+        for entry in _entries:
+            entry.delete(0, "end")
+        self.afficherLivres(tableLivres)  # re-afficher apres ajout

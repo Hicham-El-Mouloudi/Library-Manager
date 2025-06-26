@@ -80,6 +80,7 @@ class LivresModel:
             'genre': livre.genre,
             'statut': livre.statut
         })
+        print(f"Book added: {livre.titre} by {livre.auteur}")
 
     def deleteLivres(self, lesIndiceDesLivreASupprimer): # supprimer a partir d'un intervalle de lignes
         lesIndiceDesLivreASupprimer = sorted(lesIndiceDesLivreASupprimer, reverse=True)
