@@ -10,9 +10,9 @@ if __name__ == "__main__":
     exit("livresView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
 
 class LivresView : 
-    def __init__(self, parent): 
+    def __init__(self, parent, bibliotheque): 
         # Linking the model to the view
-        self._model = LivresModel()
+        self._model = bibliotheque.getLivresModel() # get the LivresModel instance from the Bibliotheque
         self._model.loadData() # Load the data from the JSON file 'livres.json'
         # the container frame for all UI components of this view
         self._frame = Frame(parent)
@@ -47,7 +47,6 @@ class LivresView :
         deleteButton.pack()
 
 
-        # TODO: implementing fields for adding new books
         # ---------------- adding a book
         bookAddFrame = Frame(self._frame, bg="lightcoral")
         bookAddFrame.pack(fill='both', padx=10, pady=10, expand=True)
@@ -67,7 +66,7 @@ class LivresView :
             bookAddFrame,
             width=36,
             text="Ajouter Un Livre",
-            command= lambda: self.ajouterLivre(tableLivres, self._entries.values())
+            command= lambda: self.validerAjoutLivre(tableLivres, self._entries.values())
         )
         addButton.pack(side='top', padx=5, pady=5)
         # # saving the books to the JSON file
@@ -97,7 +96,7 @@ class LivresView :
             self.afficherLivres(tableLivres) # re-afficher apres suppression 
         # sinon ignoreer
 
-    def ajouterLivre(self, tableLivres, _entries):
+    def validerAjoutLivre(self, tableLivres, _entries):
         if any(entry.get() == "" for entry in self._entries.values()):
             messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
             return

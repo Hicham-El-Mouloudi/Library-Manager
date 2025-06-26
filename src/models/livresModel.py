@@ -42,7 +42,7 @@ class LivresModel:
         except FileNotFoundError:
             self._livres = []
     
-    def searchLivre(self, filter = LivreRechercheFiltre.Titre, value=None):
+    def searchLivre(self, filter = LivreRechercheFiltre.Titre, value=None): # Cette fonction n'est pas utilisée encore, mais elle est prête pour une utilisation future.
         match(filter):
             # par titre
             case LivreRechercheFiltre.Titre:
