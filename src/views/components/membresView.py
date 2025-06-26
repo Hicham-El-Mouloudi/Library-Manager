@@ -71,9 +71,12 @@ class MembresView:
     def getUI(self):
         return self._frame
 
-    # TODO: Display all members in the Treeview
     def afficherMembres(self, tableMembres):
-        pass
+        tableLivres.set_children("") # clear the table first
+        for membre in self._model.listerMembres():
+            # Format the list of borrowed books as a comma-separated string
+            livresEmpruntes = ', '.join(membre.get('lesLivresEmpruntes', []))
+            tableMembres.insert("", "end", values=(membre.get('id', ''), membre.get('nom', ''), livresEmpruntes))
 
     # TODO: Validate and process member deletion
     def validerSuppression(self, tableMembres):

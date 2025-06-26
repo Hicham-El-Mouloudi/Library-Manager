@@ -84,7 +84,7 @@ class LivresView :
     
     # 
     def afficherLivres(self, tableLivres):
-        tableLivres.set_children("")
+        tableLivres.set_children("") # clear the table first
         for livre in self._model.listerLivres() : 
             tableLivres.insert("", "end", values = list(livre.values()))
 
