@@ -3,10 +3,26 @@
 # ----------------------------------------------------------------------------------------
 class Membre:
     def __init__(self, id, nom):
-        # TODO: Initialize a member with its attributes
-        pass
-    # TODO: Add getters and setters for the attributes
-    pass
+        self._id = id
+        self._nom = nom
+        self._emprunts = []
+
+    @property
+    def id(self):
+        return self._id
+    @property
+    def nom(self):
+        return self._nom
+
+    @nom.setter
+    def nom(self, nom):
+        self._nom = nom
+    @id.setter
+    def id(self, id):
+        self._id = id
+
+    def getEmprunts(self):
+        return self._emprunts
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
