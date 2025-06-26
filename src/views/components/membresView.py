@@ -12,6 +12,8 @@ class MembresView:
     def __init__(self, parent, bibliotheque):
         # Linking the model to the view
         self._model = bibliotheque.getLivresModel() # get the LivresModel instance from the Bibliotheque
+        self._model.loadData()
+        # the container frame for all UI components of this view
         self._frame = Frame(parent)
         self.initUI()
 
