@@ -90,6 +90,19 @@ class MembresView:
             self.afficherMembres(tableMembres) # re-afficher apres suppression 
         # sinon ignorer
 
-    # TODO: Validate and process member addition
     def validerAjoutMembre(self, tableMembres, entries):
-        pass
+        if any(entry.get() == "" for entry in self._entries.values()):
+            messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
+            return
+        # Préparer le dictionnaire du membre à ajouter
+        nouveau_membre = {
+            'id': self._entries['ID'].get(),
+            'nom': self._entries['Nom'].get(),
+            'lesLivresEmpruntes': [] # always a new memeber starts with an empty list
+        }
+        self._model.addMembre(nouveau_membre)
+        messagebox.showinfo("Succès", "Membre ajouté avec succès")
+        # vider les champs
+        for entry in entries:
+            entry.delete(0, "end")
+        self.afficherMembres(tableMembres)  # re-afficher apres ajout
