@@ -6,7 +6,7 @@ if __name__ == "__main__":
 class EmpruntsView:
     def __init__(self, parent, bibliotheque): 
         # Linking the model to the view
-        self._model = bibliotheque.getLivresModel() # get the LivresModel instance from the Bibliotheque
+        self._model = None
         self._frame = Frame(parent)
         self.initUI()
 
