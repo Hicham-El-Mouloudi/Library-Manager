@@ -5,12 +5,24 @@ from enum import Enum
 from models.Livre import Livre
 
 
+# ----------------------------------------------------------------------------------------
+# ------------------------------------ LivreInexistantError ------------------------------------
+# ----------------------------------------------------------------------------------------
+# Custom exception for handling cases where a book does not exist
+class LivreInexistantError(Exception):
+    def __init__(self, message="Le livre n'existe pas dans les données disponible."):
+        self.message = message
+        super().__init__(self.message)
+# ----------------------------------------------------------------------------------------
+
 
 # ----------------------------------------------------------------------------------------
 # ------------------------------------ LivreRechercheFiltre ------------------------------------
 # ----------------------------------------------------------------------------------------
 # Enum to define the different filters for searching books
 class LivreRechercheFiltre(Enum): # C'est pas encore utilisé !!!!!!!!
+    ISBN = "isbn"  # This is used to search by index in the list of books
+    # Other filters
     Titre = "titre"
     Auteur = "auteur"
     Annee = "annee"
@@ -45,29 +57,34 @@ class LivresModel:
     def searchLivre(self, filter = LivreRechercheFiltre.Titre, value=None): # Cette fonction n'est pas utilisée encore, mais elle est prête pour une utilisation future.
         match(filter):
             # par titre
+            case LivreRechercheFiltre.ISBN:
+                for livre in self._livres:
+                    if livre['ISBN'].lower() == value.lower():
+                        return livre
+                raise LivreInexistantError(f"Le livre avec l'ISBN '{value}' n'existe pas dans les données disponibles.")
             case LivreRechercheFiltre.Titre:
                 for livre in self._livres:
                     if livre['titre'].lower() == value.lower():
                         return livre
-                return False
+                raise LivreInexistantError(f"Le livre avec le titre '{value}' n'existe pas dans les données disponibles.")
             # par auteur
             case LivreRechercheFiltre.Auteur:
                 for livre in self._livres:
                     if livre['auteur'].lower() == value.lower():
                         return livre
-                return False
+                raise LivreInexistantError(f"Le livre avec l'auteur '{value}' n'existe pas dans les données disponibles.")
             # par annee
             case LivreRechercheFiltre.Annee:
                 for livre in self._livres:
                     if livre['annee'] == value:
                         return livre
-                return False
+                raise LivreInexistantError(f"Le livre publié en l'année '{value}' n'existe pas dans les données disponibles.")
             # par genre
             case LivreRechercheFiltre.Genre:
                 for livre in self._livres:
                     if livre['genre'].lower() == value.lower():
                         return livre
-                return False
+                raise LivreInexistantError(f"Le livre du genre '{value}' n'existe pas dans les données disponibles.")
             case _:
                 raise ValueError("Invalid filter type provided.")
 
