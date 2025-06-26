@@ -16,7 +16,22 @@ class MembresView:
         self.initUI()
 
     def initUI(self): 
+        # TODO: Add frame for members visualisation (Treeview)
+        # TODO: Add frame for deleting a member
+        # TODO: Add frame for adding a member
         return self._frame
 
     def getUI(self):
         return self._frame
+
+    # TODO: Display all members in the Treeview
+    def afficherMembres(self, tableMembres):
+        pass
+
+    # TODO: Validate and process member deletion
+    def validerSuppression(self, tableMembres):
+        pass
+
+    # TODO: Validate and process member addition
+    def validerAjoutMembre(self, tableMembres, entries):
+        pass
