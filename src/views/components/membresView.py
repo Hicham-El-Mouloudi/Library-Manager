@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import ttk, messagebox
 # custom imports
 from models.membresModel import MembresModel
+from models.Membre import Membre
 
 
 if __name__ == "__main__":
@@ -95,12 +96,11 @@ class MembresView:
             messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
             return
         # Préparer le dictionnaire du membre à ajouter
-        nouveau_membre = {
-            'id': self._entries['ID'].get(),
-            'nom': self._entries['Nom'].get(),
-            'lesLivresEmpruntes': [] # always a new memeber starts with an empty list
-        }
-        self._model.addMembre(nouveau_membre)
+        nouveauMembre = Membre(
+            id=self._entries["ID"].get().strip(),
+            nom=self._entries["Nom"].get().strip()
+        )
+        self._model.addMembre(nouveauMembre)
         messagebox.showinfo("Succès", "Membre ajouté avec succès")
         # vider les champs
         for entry in entries:

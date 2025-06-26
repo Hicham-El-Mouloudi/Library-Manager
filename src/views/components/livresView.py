@@ -106,12 +106,12 @@ class LivresView :
             messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
             return
         self._model.addLivre(Livre(
-            self._entries['ISBN'].get(),
-            self._entries['Titre'].get(),
-            self._entries['Auteur'].get(),
-            self._entries['Année'].get(),
-            self._entries['Genre'].get(),
-            self._entries['Statut'].get()
+            self._entries['ISBN'].get().strip(),
+            self._entries['Titre'].get().strip(),
+            self._entries['Auteur'].get().strip(),
+            self._entries['Année'].get().strip(),
+            self._entries['Genre'].get().strip(),
+            self._entries['Statut'].get().strip()
         ))
         messagebox.showinfo("Succès", "Livre ajouté avec succès")
         # vider les champs
