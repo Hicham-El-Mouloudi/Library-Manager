@@ -78,9 +78,17 @@ class MembresView:
             livresEmpruntes = ', '.join(membre.get('lesLivresEmpruntes', []))
             tableMembres.insert("", "end", values=(membre.get('id', ''), membre.get('nom', ''), livresEmpruntes))
 
-    # TODO: Validate and process member deletion
     def validerSuppression(self, tableMembres):
-        pass
+        selected = tableMembres.selection()  # liste des ID des lignes selectionnées
+        if len(selected) == 0:
+            messagebox.showerror("Erreur", "Vous devez selectionner des membres à supprimer")
+            return
+        response = messagebox.askyesno("Confirmation De Suppression", "Est-ce que vous voulez vraiment supprimer les membres selectionnés ?")
+        if response:
+            indicesASupprimer = [tableMembres.index(indx) for indx in selected] # obtenir les indices des lignes selectionées, à partir des ID obtnue par 'selected'
+            self._model.deleteMembres(indicesASupprimer)
+            self.afficherMembres(tableMembres) # re-afficher apres suppression 
+        # sinon ignorer
 
     # TODO: Validate and process member addition
     def validerAjoutMembre(self, tableMembres, entries):
