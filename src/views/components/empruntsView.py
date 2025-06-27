@@ -1,4 +1,10 @@
+# standard imports
 from tkinter import *
+from tkinter import messagebox
+# custom imports
+from models.livresModel import LivreInexistantError
+from models.membresModel import MembreInexistantError
+from models.historiqueModel import LivreIndisponibleError, LivreDisponibleError, QuotaEmpruntDepasseError
 
 if __name__ == "__main__":
     exit("empruntsView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
@@ -68,7 +74,28 @@ class EmpruntsView:
         return self._frame
 
     def validerEmprunt(self, isbn, membreId) : 
-        pass
-
+        try : 
+            self._model.emprunterLivre(isbn, membreId)
+            messagebox.showinfo("Succès", "Livre emprunté avec succès.")
+        except LivreInexistantError as e : 
+            messagebox.showerror("Erreur", str(e))
+        except MembreInexistantError as e :
+            messagebox.showerror("Erreur", str(e))
+        except LivreIndisponibleError as e :
+            messagebox.showerror("Erreur", str(e))
+        except QuotaEmpruntDepasseError as e :
+            messagebox.showerror("Erreur", str(e))
+        except Exception as e:
+            messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
     def validerRetour(self, isbn, membreId) :
-        pass
+        try : 
+            self._model.retournerLivre(isbn, membreId)
+            messagebox.showinfo("Succès", "Livre retourné avec succès.")
+        except LivreInexistantError as e : 
+            messagebox.showerror("Erreur", str(e))
+        except MembreInexistantError as e :
+            messagebox.showerror("Erreur", str(e))
+        except LivreDisponibleError as e :
+            messagebox.showerror("Erreur", str(e))
+        except Exception as e:
+            messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
