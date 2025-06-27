@@ -1,28 +1,21 @@
+from enum import Enum
+
 # ----------------------------------------------------------------------------------------
 # ------------------------------------ Membre ------------------------------------
 # ----------------------------------------------------------------------------------------
 class Membre:
-    def __init__(self, id, nom):
-        self._id = id
-        self._nom = nom
-        self._emprunts = []
+    def __init__(self, id, nom, lesLivresEmpruntes=None):
+        self.id = id
+        self.nom = nom
+        self.lesLivresEmpruntes = lesLivresEmpruntes if lesLivresEmpruntes is not None else []
+    
+    # def __str__(self): # This method is used when displaying each member along with the books he has borrowed
+    #     # Return a string representation of the member
+    #     return f"nom : {self.nom}, lesLivresEmpruntes={self.lesLivresEmpruntes})"
 
-    @property
-    def id(self):
-        return self._id
-    @property
-    def nom(self):
-        return self._nom
-
-    @nom.setter
-    def nom(self, nom):
-        self._nom = nom
-    @id.setter
-    def id(self, id):
-        self._id = id
-
-    def getEmprunts(self):
-        return self._emprunts
+    def getValuesList(self):
+        # Return a list of the member's attributes values
+        return [self.id, self.nom, '\n'.join([ str(livre) for livre in self.lesLivresEmpruntes ])]
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------

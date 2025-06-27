@@ -76,8 +76,7 @@ class MembresView:
         tableMembres.set_children("") # clear the table first
         for membre in self._model.listerMembres():
             # Format the list of borrowed books as a comma-separated string
-            livresEmpruntes = ', '.join(membre.get('lesLivresEmpruntes', []))
-            tableMembres.insert("", "end", values=(membre.get('id', ''), membre.get('nom', ''), livresEmpruntes))
+            tableMembres.insert("", "end", values=membre.getValuesList())
 
     def validerSuppression(self, tableMembres):
         selected = tableMembres.selection()  # liste des ID des lignes selectionnées
@@ -95,12 +94,8 @@ class MembresView:
         if any(entry.get() == "" for entry in self._entries.values()):
             messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
             return
-        # Préparer le dictionnaire du membre à ajouter
-        nouveauMembre = Membre(
-            id=self._entries["ID"].get().strip(),
-            nom=self._entries["Nom"].get().strip()
-        )
-        self._model.addMembre(nouveauMembre)
+        # Ajouter le membre
+        self._model.addMembre(self._entries["ID"].get().strip(), self._entries["Nom"].get().strip())
         messagebox.showinfo("Succès", "Membre ajouté avec succès")
         # vider les champs
         for entry in entries:

@@ -2,12 +2,38 @@
     {
         "id": "M001",
         "nom": "Dupont Alice",
-        "lesLivresEmpruntes": ["978-0140449136", "978-2070368228"]
+        "lesLivresEmpruntes": [
+            {
+                "ISBN": "978-0140449136",
+                "titre": "L'Étranger",
+                "auteur": "Albert Camus",
+                "annee": "1942",
+                "genre": "Roman",
+                "statut": "emprunté"
+            },
+            {
+                "ISBN": "978-2070368228",
+                "titre": "Le Petit Prince",
+                "auteur": "Antoine de Saint-Exupéry",
+                "annee": "1943",
+                "genre": "Conte",
+                "statut": "emprunté"
+            }
+        ]
     },
     {
         "id": "M002",
         "nom": "Martin Jean",
-        "lesLivresEmpruntes": ["978-2253002023"]
+        "lesLivresEmpruntes": [
+            {
+                "ISBN": "978-2253002023",
+                "titre": "Les Misérables",
+                "auteur": "Victor Hugo",
+                "annee": "1862",
+                "genre": "Roman historique",
+                "statut": "emprunté"
+            }
+        ]
     },
     {
         "id": "M003",
@@ -17,36 +43,37 @@
     {
         "id": "M004",
         "nom": "Petit Luc",
-        "lesLivresEmpruntes": ["978-2070413119"]
+        "lesLivresEmpruntes": [
+            {
+                "ISBN": "978-2070413119",
+                "titre": "Madame Bovary",
+                "auteur": "Gustave Flaubert",
+                "annee": "1857",
+                "genre": "Roman",
+                "statut": "emprunté"
+            }
+        ]
     },
     {
         "id": "M005",
         "nom": "Robert Emma",
-        "lesLivresEmpruntes": ["978-2253083473", "978-0140449136"]
-    },
-    {
-        "id": "M006",
-        "nom": "Richard Paul",
-        "lesLivresEmpruntes": []
-    },
-    {
-        "id": "M007",
-        "nom": "Durand Sophie",
-        "lesLivresEmpruntes": ["978-2070368228"]
-    },
-    {
-        "id": "M008",
-        "nom": "Lefevre Hugo",
-        "lesLivresEmpruntes": []
-    },
-    {
-        "id": "M009",
-        "nom": "Moreau Julie",
-        "lesLivresEmpruntes": ["978-2253002023", "978-2070413119"]
-    },
-    {
-        "id": "M010",
-        "nom": "Simon Louis",
-        "lesLivresEmpruntes": []
+        "lesLivresEmpruntes": [
+            {
+                "ISBN": "978-2253083473",
+                "titre": "Germinal",
+                "auteur": "Émile Zola",
+                "annee": "1885",
+                "genre": "Roman",
+                "statut": "emprunté"
+            },
+            {
+                "ISBN": "978-0140449136",
+                "titre": "L'Étranger",
+                "auteur": "Albert Camus",
+                "annee": "1942",
+                "genre": "Roman",
+                "statut": "emprunté"
+            }
+        ]
     }
 ]

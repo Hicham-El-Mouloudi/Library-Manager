@@ -24,6 +24,10 @@ class Livre :
         self.annee = annee
         self.genre = genre
         self.statut = statut # disponible ou emprunté
+    
+    def __str__(self): # This method is used to when printing the list of books borrowed by a member
+        # Return a string representation of the book
+        return f"ISBN: {self.ISBN} - Titre: {self.titre}"
 
     def getValuesList(self):
         # Return a list of the book's attributes values
