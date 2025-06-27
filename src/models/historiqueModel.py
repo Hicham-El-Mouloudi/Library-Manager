@@ -1,5 +1,7 @@
 # standard imports
+from enum import Enum
 import json
+import time
 # custom imports
 from models.livresModel import LivresModel, LivreRechercheFiltre, LivreInexistantError
 from models.membresModel import MembresModel, MembreRechercheFiltre, MembreInexistantError
@@ -45,6 +47,19 @@ class QuotaEmpruntDepasseError(Exception):
 
 
 
+# ----------------------------------------------------------------------------------------
+# ------------------------------------ LibraryActionEnum ------------------------------------
+# ----------------------------------------------------------------------------------------
+# This enum defines the operations of borrow/return
+class LibraryActionEnum(Enum):
+    EMPRUNT = "emprunt"
+    RETOUR = "retour"
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+
+
+
 
 # ----------------------------------------------------------------------------------------
 # ------------------------------------ EmpruntsModel ------------------------------------
@@ -54,24 +69,18 @@ class HistoriqueModel:
         self.membresModel = membresModel
         self.livresModel = livresModel
         self.borrowingQuota = borrowingQuota  # Maximum number of books a member can borrow
-        self._emprunts = []
-
-    def toJSON(self, listDesObjHistorique):
-        # transforming a list of HistoriqueRecord objects to a list of dictionaries
-        return [ record.__dict__ for record in listDesObjHistorique ]
-    
-    def fromJSON(self, listDesDictHistorique):
-        # transforming a list of dictionaries to a list of HistoriqueRecord objects
-        return [ HistoriqueRecord(record["unixTime"], record["isbn"], record["membreId"], record["action"]) for record in listDesDictHistorique ]
+        self._emprunts = None
+        # 
+        self.loadData()
 
     def loadData(self):
         # Load data from "historique.json" file
         try:
             with open("data/historique.json", "r") as file:
                 data = json.load(file)
-                self._emprunts = self.fromJSON(data)
+                self._emprunts = data
         except FileNotFoundError:
-            self._emprunts = []
+            self._emprunts = {}
 
     def saveData(self):
         # saving data in livresModel and membresModel
@@ -79,8 +88,7 @@ class HistoriqueModel:
         self.membresModel.saveData()
         # Save data to "historique.json" file
         with open("data/historique.json", "w") as file:
-            self._emprunts = self.toJSON(self._emprunts)
-            # Write the list of dictionaries to the file
+            # Write the dictionary in "historique.json"
             json.dump(self._emprunts, file, indent=4)
 
     def emprunterLivre(self, isbn, membreId):
@@ -102,6 +110,8 @@ class HistoriqueModel:
                 livre.statut = StatutLivreEnum.EMPRUNTE.value
                 # # # # ------> Add the book to the member's borrowed books list
                 membre.livresEmpruntes.append(livre)
+                # # # # --------------> Recording the borrow
+                self.addNewRecord(livre.isbn, membre.id, LibraryActionEnum.EMPRUNT.value)
 
             except MembreInexistantError as e:
                 raise e # the error captured will be forwarded to the caller
@@ -128,9 +138,19 @@ class HistoriqueModel:
                     membre.livresEmpruntes.remove(livre) # removing the book from the member's borrowed books list
                 else:
                     raise LivreInexistantError(f"Le livre {livre.titre} n'est pas dans la liste des livres empruntés par le membre {membre.nom}.")
+                # # # # --------------> Recording the return
+                self.addNewRecord(livre.isbn, membre.id, LibraryActionEnum.RETOUR.value)
 
             except MembreInexistantError as e:
                 raise e # the error captured will be forwarded to the caller
 
         except LivreInexistantError as e: 
             raise e # the error captured will be forwarded to the caller
+    
+    # This function adds a new record to the historique.json
+    def addNewRecord(self, isbn, membreId, action = LibraryActionEnum.EMPRUNT.value) :
+        self._emprunts[int(time.time() * 1000)] = { # int(time.time() * 1000)  is time stamp in miliseconds
+            "ISBN" : isbn,
+            "idMembre" : membreId,
+            "action" : action
+        }

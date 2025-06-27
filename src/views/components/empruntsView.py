@@ -13,6 +13,7 @@ class EmpruntsView:
     def __init__(self, parent, bibliotheque): 
         # Linking the model to the view
         self._model = bibliotheque.getHistoriqueModel()
+        self._model.loadData()  # Load the data from the JSON file 'historique.json'
         # Creating the frame for the view
         self._frame = Frame(parent)
         self.initUI()
@@ -92,8 +93,8 @@ class EmpruntsView:
             messagebox.showerror("Erreur", str(e))
         except QuotaEmpruntDepasseError as e :
             messagebox.showerror("Erreur", str(e))
-        except Exception as e:
-            messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
+        # except Exception as e:
+        #     messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
     def validerRetour(self, isbn, membreId) :
         try : 
             self._model.retournerLivre(isbn, membreId)
@@ -104,8 +105,8 @@ class EmpruntsView:
             messagebox.showerror("Erreur", str(e))
         except LivreDisponibleError as e :
             messagebox.showerror("Erreur", str(e))
-        except Exception as e:
-            messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
+        # except Exception as e:
+        #     messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
 
     def saveData(self):
         self._model.saveData()
