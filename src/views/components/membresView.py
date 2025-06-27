@@ -90,6 +90,8 @@ class MembresView:
             self.afficherMembres(tableMembres) # re-afficher apres suppression 
         # sinon ignorer
 
+    #entries : liste of Entry widgets
+    #tableMembres : Treeview widget
     def validerAjoutMembre(self, tableMembres, entries):
         if any(entry.get() == "" for entry in self._entries.values()):
             messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
