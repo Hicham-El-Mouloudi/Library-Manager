@@ -49,8 +49,8 @@ class QuotaEmpruntDepasseError(Exception):
 # ----------------------------------------------------------------------------------------
 # ------------------------------------ EmpruntsModel ------------------------------------
 # ----------------------------------------------------------------------------------------
-class EmpruntsModel:
-    def __init__(self, membresModel : MembresModel, livresModel: LivresModel, borrowingQuota=3):
+class HistoriqueModel:
+    def __init__(self, membresModel : MembresModel, livresModel: LivresModel, borrowingQuota):
         self.membresModel = membresModel
         self.livresModel = livresModel
         self.borrowingQuota = borrowingQuota  # Maximum number of books a member can borrow
