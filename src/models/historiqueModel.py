@@ -33,7 +33,7 @@ class EmpruntsModel:
     def __init__(self, membresModel, livresModel):
         self.membresModel = membresModel
         self.livresModel = livresModel
-        self.emprunts = []
+        self._emprunts = []
 
     def toJSON(self, listDesObjHistorique):
         # transforming a list of HistoriqueRecord objects to a list of dictionaries
@@ -48,12 +48,16 @@ class EmpruntsModel:
         try:
             with open("data/historique.json", "r") as file:
                 data = json.load(file)
-                self.emprunts = self.fromJSON(data)
+                self._emprunts = self.fromJSON(data)
         except FileNotFoundError:
-            self.emprunts = []
+            self._emprunts = []
 
     def saveData(self):
-        pass
+        # Save data to "historique.json" file
+        with open("data/historique.json", "w") as file:
+            self._emprunts = self.toJSON(self._emprunts)
+            # Write the list of dictionaries to the file
+            json.dump(self._emprunts, file, indent=4)
 
     def emprunterLivre(self, isbn, membreId):
         pass
