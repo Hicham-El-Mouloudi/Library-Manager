@@ -149,7 +149,7 @@ class HistoriqueModel:
     
     # This function adds a new record to the historique.json
     def addNewRecord(self, isbn, membreId, action = LibraryActionEnum.EMPRUNT.value) :
-        self._emprunts[int(time.time() * 1000)] = { # int(time.time() * 1000)  is time stamp in miliseconds
+        self._emprunts[int(time.time() * 1000)] = { # int(time.time() * 1000)  is time stamp in miliseconds for time of current operation
             "ISBN" : isbn,
             "idMembre" : membreId,
             "action" : action
