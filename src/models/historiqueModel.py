@@ -44,7 +44,13 @@ class EmpruntsModel:
         return [ HistoriqueRecord(record["unixTime"], record["isbn"], record["membreId"], record["action"]) for record in listDesDictHistorique ]
 
     def loadData(self):
-        pass
+        # Load data from "historique.json" file
+        try:
+            with open("data/historique.json", "r") as file:
+                data = json.load(file)
+                self.emprunts = self.fromJSON(data)
+        except FileNotFoundError:
+            self.emprunts = []
 
     def saveData(self):
         pass
