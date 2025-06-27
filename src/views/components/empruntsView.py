@@ -34,7 +34,7 @@ class EmpruntsView:
         empruntsMembreIdEntry = Entry(empruntsMemberFrame, width=40)
         empruntsMembreIdEntry.pack(side="left", pady=5, fill="both", expand=True)
         # button to borrow a book
-        empruntsButton = Button(empruntsFrame, text="Emprunter le livre", command=lambda: self._model.emprunterLivre(empruntsISBNEntry.get(), empruntsMembreIdEntry.get()))
+        empruntsButton = Button(empruntsFrame, text="Emprunter le livre", command=lambda: self.validerEmprunt(empruntsISBNEntry.get(), empruntsMembreIdEntry.get()))
         empruntsButton.pack(pady=5)
 
         # --------------------------------------Returnning books section
@@ -59,10 +59,16 @@ class EmpruntsView:
         retourMembreIdEntry = Entry(retourMemberFrame, width=40)
         retourMembreIdEntry.pack(side="left", pady=5, fill="both", expand=True)
         # button to return a book
-        retourButton = Button(retourFrame, text="Retourner le livre", command=lambda: self._model.retournerLivre(retourISBNEntry.get(), retourMembreIdEntry.get()))
+        retourButton = Button(retourFrame, text="Retourner le livre", command=lambda: self.validerRetour(retourISBNEntry.get(), retourMembreIdEntry.get()))
         retourButton.pack(pady=5)
 
         return self._frame
 
     def getUI(self):
         return self._frame
+
+    def validerEmprunt(self, isbn, membreId) : 
+        pass
+
+    def validerRetour(self, isbn, membreId) :
+        pass
