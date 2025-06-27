@@ -63,9 +63,6 @@ class LivresModel:
         return [ Livre(livre["ISBN"], livre["titre"], livre["auteur"], livre["annee"], livre["genre"], livre["statut"]) for livre in listDesDictLivres]
     
     def searchLivre(self, filter = LivreRechercheFiltre.ISBN, value=""): # cette fct est utilisées dans la vue empruntsView.py pour rechercher un livre par son titre, ISBN.
-        print("type(filter):", type(filter), "value:", filter)
-        print("type(LivreRechercheFiltre.ISBN):", type(LivreRechercheFiltre.ISBN), "value:", LivreRechercheFiltre.ISBN)
-        print("searchLivre : called with value : " + filter.value + "\t check : " + str(filter == LivreRechercheFiltre.ISBN))
         match(filter):
             # par titre
             case LivreRechercheFiltre.ISBN:
