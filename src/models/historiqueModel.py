@@ -1,7 +1,12 @@
-
+# standard imports
+import json
+# custom imports
+from models.livresModel import LivresModel, LivreRechercheFiltre, LivreInexistantError
+from models.membresModel import MembresModel, MembreRechercheFiltre, MembreInexistantError
+from models.Livre import Livre, StatutLivreEnum
 
 # ----------------------------------------------------------------------------------------
-# ------------------------------------ EmpruntsModel ------------------------------------
+# ------------------------------------ LivreIndisponibleError ------------------------------------
 # ----------------------------------------------------------------------------------------
 class LivreIndisponibleError(Exception):
     def __init__(self, message="Le livre est indisponible pour l'emprunt."):
@@ -10,6 +15,21 @@ class LivreIndisponibleError(Exception):
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
+
+
+# ----------------------------------------------------------------------------------------
+# ------------------------------------ LivreDisponibleError ------------------------------------
+# ----------------------------------------------------------------------------------------
+class LivreDisponibleError(Exception):
+    def __init__(self, message="Le livre est déjà disponible. Il ne peut pas être retourner."):
+        self.message = message
+        super().__init__(self.message)
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+
+
+
 
 # ----------------------------------------------------------------------------------------
 # ------------------------------------ QuotaEmpruntDepasseError ------------------------------------
@@ -30,9 +50,10 @@ class QuotaEmpruntDepasseError(Exception):
 # ------------------------------------ EmpruntsModel ------------------------------------
 # ----------------------------------------------------------------------------------------
 class EmpruntsModel:
-    def __init__(self, membresModel, livresModel):
+    def __init__(self, membresModel : MembresModel, livresModel: LivresModel, borrowingQuota=3):
         self.membresModel = membresModel
         self.livresModel = livresModel
+        self.borrowingQuota = borrowingQuota  # Maximum number of books a member can borrow
         self._emprunts = []
 
     def toJSON(self, listDesObjHistorique):
@@ -60,7 +81,53 @@ class EmpruntsModel:
             json.dump(self._emprunts, file, indent=4)
 
     def emprunterLivre(self, isbn, membreId):
-        pass
+        # search for the book in the books model
+        try : 
+            livre = self.livresModel.searchLivre(LivreRechercheFiltre.ISBN, isbn)
+            # check if the book is not borrewed
+            if livre.statut == StatutLivreEnum.EMPRUNTE.value :
+                raise LivreIndisponibleError(f"Le livre {livre.titre} est déjà emprunté.")
+            
+            # check if the member exists
+            try : 
+                membre = self.membresModel.searchMembre(MembreRechercheFiltre.Id, membreId)
+                # check if the member has not exceeded the borrowing quota
+                if len(membre.livresEmpruntes) + 1 > self.borrowingQuota:
+                    raise QuotaEmpruntDepasseError(f"Le membre {membre.nom} ne peut pas dépasser le quota d'emprunt de {self.borrowingQuota} livres.")
+                
+                # # # # ------>  Borrow the book
+                livre.statut = StatutLivreEnum.EMPRUNTE.value
+                # # # # ------> Add the book to the member's borrowed books list
+                membre.livresEmpruntes.append(livre)
+
+            except MembreInexistantError as e:
+                raise e # the error captured will be forwarded to the caller
+
+        except LivreInexistantError as e: 
+            raise e # the error captured will be forwarded to the caller
 
     def retournerLivre(self, isbn, membreId):
-        pass
+        # search for the book in the books model
+        try : 
+            livre = self.livresModel.searchLivre(LivreRechercheFiltre.ISBN, isbn)
+            # check if the book is borrowed
+            if livre.statut == StatutLivreEnum.DISPONIBLE.value :
+                raise LivreDisponibleError(f"Le livre {livre.titre} est déjà disponible. Il ne peut pas être retourné.")
+            
+            # check if the member exists
+            try : 
+                membre = self.membresModel.searchMembre(MembreRechercheFiltre.Id, membreId)
+                
+                # # # # ------>  Return the book
+                livre.statut = StatutLivreEnum.DISPONIBLE.value
+                # # # # ------> remove the book from the member's borrowed books list
+                if livre in membre.livresEmpruntes:
+                    membre.livresEmpruntes.remove(livre) # removing the book from the member's borrowed books list
+                else:
+                    raise LivreInexistantError(f"Le livre {livre.titre} n'est pas dans la liste des livres empruntés par le membre {membre.nom}.")
+
+            except MembreInexistantError as e:
+                raise e # the error captured will be forwarded to the caller
+
+        except LivreInexistantError as e: 
+            raise e # the error captured will be forwarded to the caller
