@@ -1,7 +1,7 @@
 [
     {
         "ISBN": "978-0140449136",
-        "titre": "L'Étranger",
+        "titre": "L'\u00c9tranger",
         "auteur": "Albert Camus",
         "annee": "1942",
         "genre": "Roman",
@@ -10,14 +10,14 @@
     {
         "ISBN": "978-2070368228",
         "titre": "Le Petit Prince",
-        "auteur": "Antoine de Saint-Exupéry",
+        "auteur": "Antoine de Saint-Exup\u00e9ry",
         "annee": "1943",
         "genre": "Conte",
-        "statut": "emprunté"
+        "statut": "emprunt\u00e9"
     },
     {
         "ISBN": "978-2253002023",
-        "titre": "Les Misérables",
+        "titre": "Les Mis\u00e9rables",
         "auteur": "Victor Hugo",
         "annee": "1862",
         "genre": "Roman historique",
@@ -34,14 +34,14 @@
     {
         "ISBN": "978-2253083473",
         "titre": "Germinal",
-        "auteur": "Émile Zola",
+        "auteur": "\u00c9mile Zola",
         "annee": "1885",
         "genre": "Roman",
-        "statut": "emprunté"
+        "statut": "emprunt\u00e9"
     },
     {
         "ISBN": "978-0140449136",
-        "titre": "L'Étranger",
+        "titre": "L'\u00c9tranger",
         "auteur": "Albert Camus",
         "annee": "1942",
         "genre": "Roman",
@@ -50,14 +50,14 @@
     {
         "ISBN": "978-2070368228",
         "titre": "Le Petit Prince",
-        "auteur": "Antoine de Saint-Exupéry",
+        "auteur": "Antoine de Saint-Exup\u00e9ry",
         "annee": "1943",
         "genre": "Conte",
-        "statut": "emprunté"
+        "statut": "emprunt\u00e9"
     },
     {
         "ISBN": "978-2253002023",
-        "titre": "Les Misérables",
+        "titre": "Les Mis\u00e9rables",
         "auteur": "Victor Hugo",
         "annee": "1862",
         "genre": "Roman historique",
@@ -74,22 +74,22 @@
     {
         "ISBN": "978-2253083473",
         "titre": "Germinal",
-        "auteur": "Émile Zola",
+        "auteur": "\u00c9mile Zola",
         "annee": "1885",
         "genre": "Roman",
-        "statut": "emprunté"
+        "statut": "emprunt\u00e9"
     },
     {
         "ISBN": "978-2070368228",
         "titre": "Le Petit Prince",
-        "auteur": "Antoine de Saint-Exupéry",
+        "auteur": "Antoine de Saint-Exup\u00e9ry",
         "annee": "1943",
         "genre": "Conte",
-        "statut": "emprunté"
+        "statut": "emprunt\u00e9"
     },
     {
         "ISBN": "978-2253002023",
-        "titre": "Les Misérables",
+        "titre": "Les Mis\u00e9rables",
         "auteur": "Victor Hugo",
         "annee": "1862",
         "genre": "Roman historique",
@@ -106,9 +106,9 @@
     {
         "ISBN": "978-2253083473",
         "titre": "Germinal",
-        "auteur": "Émile Zola",
+        "auteur": "\u00c9mile Zola",
         "annee": "1885",
         "genre": "Roman",
-        "statut": "emprunté"
+        "statut": "emprunt\u00e9"
     }
 ]

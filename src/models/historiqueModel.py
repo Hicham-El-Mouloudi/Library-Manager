@@ -74,6 +74,9 @@ class HistoriqueModel:
             self._emprunts = []
 
     def saveData(self):
+        # saving data in livresModel and membresModel
+        self.livresModel.saveData()
+        self.membresModel.saveData()
         # Save data to "historique.json" file
         with open("data/historique.json", "w") as file:
             self._emprunts = self.toJSON(self._emprunts)

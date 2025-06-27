@@ -18,9 +18,11 @@ class EmpruntsView:
         self.initUI()
 
     def initUI(self):
+        outerFrame = Frame(self._frame, bg="lightgray", height=100)
+        outerFrame.pack(fill='x', expand=True, padx=10, pady=10)
         #-------------------------------- Borrowing books section
         # ------------------------------------------------------------------------------------------
-        empruntsFrame = Frame(self._frame, bg="lightblue")
+        empruntsFrame = Frame(outerFrame, bg="lightblue")
         empruntsFrame.pack(side="left", fill='both', expand=True, padx=10, pady=10)
         # sub-components for borrowing books
         empruntsContainerFrame = Frame(empruntsFrame, bg="lightyellow", width=400, height=200)
@@ -45,7 +47,7 @@ class EmpruntsView:
 
         # --------------------------------------Returnning books section
         # ------------------------------------------------------------------------------------------
-        retourFrame = Frame(self._frame, bg="lightgreen")
+        retourFrame = Frame(outerFrame, bg="lightgreen")
         retourFrame.pack(side="left", fill='both', expand=True, padx=10, pady=10)
         # sub-components for returning books
         retourContainerFrame = Frame(retourFrame, bg="lightyellow", width=400, height=200)
@@ -67,6 +69,11 @@ class EmpruntsView:
         # button to return a book
         retourButton = Button(retourFrame, text="Retourner le livre", command=lambda: self.validerRetour(retourISBNEntry.get(), retourMembreIdEntry.get()))
         retourButton.pack(pady=5)
+
+        #-------------------- Save button
+        # ------------------------------------------------------------------------------------------
+        saveButton = Button(self._frame, text="Enregistrer les emprunts", command=self.saveData)
+        saveButton.pack(pady=10)
 
         return self._frame
 
@@ -99,3 +106,7 @@ class EmpruntsView:
             messagebox.showerror("Erreur", str(e))
         except Exception as e:
             messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
+
+    def saveData(self):
+        self._model.saveData()
+        messagebox.showinfo("Succès", "Les emprunts ont été enregistrés avec succès.")
