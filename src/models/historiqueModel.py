@@ -111,7 +111,7 @@ class HistoriqueModel:
                 # # # # ------> Add the book to the member's borrowed books list
                 membre.livresEmpruntes.append(livre)
                 # # # # --------------> Recording the borrow
-                self.addNewRecord(livre.isbn, membre.id, LibraryActionEnum.EMPRUNT.value)
+                self.addNewRecord(livre.ISBN, membre.id, LibraryActionEnum.EMPRUNT.value)
 
             except MembreInexistantError as e:
                 raise e # the error captured will be forwarded to the caller
@@ -139,7 +139,7 @@ class HistoriqueModel:
                 else:
                     raise LivreInexistantError(f"Le livre {livre.titre} n'est pas dans la liste des livres empruntés par le membre {membre.nom}.")
                 # # # # --------------> Recording the return
-                self.addNewRecord(livre.isbn, membre.id, LibraryActionEnum.RETOUR.value)
+                self.addNewRecord(livre.ISBN, membre.id, LibraryActionEnum.RETOUR.value)
 
             except MembreInexistantError as e:
                 raise e # the error captured will be forwarded to the caller
