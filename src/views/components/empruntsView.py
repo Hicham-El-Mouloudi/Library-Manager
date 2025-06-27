@@ -41,6 +41,27 @@ class EmpruntsView:
         # ------------------------------------------------------------------------------------------
         retourFrame = Frame(self._frame, bg="lightgreen")
         retourFrame.pack(side="left", fill='both', expand=True, padx=10, pady=10)
+        # sub-components for returning books
+        retourContainerFrame = Frame(retourFrame, bg="lightyellow", width=400, height=200)
+        retourContainerFrame.pack(pady=10)
+        # labels and entries for returning books
+        retourIsbnFrame = Frame(retourContainerFrame, bg="lightblue")
+        retourIsbnFrame.pack(pady=5, fill="both", expand=True)
+        retourISBNLabel = Label(retourIsbnFrame, text="ISBN du livre à retourner:", width=26)
+        retourISBNLabel.pack(side="left", pady=5, fill="both", expand=True)
+        retourISBNEntry = Entry(retourIsbnFrame, width=40)
+        retourISBNEntry.pack(side="left", pady=5, fill="both", expand=True)
+        #
+        retourMemberFrame = Frame(retourContainerFrame, bg="lightblue")
+        retourMemberFrame.pack(pady=5, fill="both", expand=True)
+        retourMembreIdLabel = Label(retourMemberFrame, text="ID du membre:", width=26)
+        retourMembreIdLabel.pack(side="left", pady=5, fill="both", expand=True)
+        retourMembreIdEntry = Entry(retourMemberFrame, width=40)
+        retourMembreIdEntry.pack(side="left", pady=5, fill="both", expand=True)
+        # button to return a book
+        retourButton = Button(retourFrame, text="Retourner le livre", command=lambda: self._model.retournerLivre(retourISBNEntry.get(), retourMembreIdEntry.get()))
+        retourButton.pack(pady=5)
+
         return self._frame
 
     def getUI(self):
