@@ -27,7 +27,7 @@ class Livre :
     
     def __str__(self): # This method is used to when printing the list of books borrowed by a member
         # Return a string representation of the book
-        return f"ISBN: {self.ISBN} - Titre: {self.titre}"
+        return f"- Titre: {self.titre}"
 
     def getValuesList(self):
         # Return a list of the book's attributes values
