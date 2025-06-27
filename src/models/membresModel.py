@@ -65,7 +65,7 @@ class MembresModel:
                             livre["annee"],
                             livre["genre"],
                             livre["statut"],
-                            ) for livre in m['lesLivresEmpruntes']
+                            ) for livre in m['livresEmpruntes']
                     ] )
                 )
         return membres
@@ -76,7 +76,7 @@ class MembresModel:
             {
                 "id": membre.id,
                 "nom": membre.nom,
-                "lesLivresEmpruntes": [
+                "livresEmpruntes": [
                     {
                         "ISBN" : livre.ISBN,
                         "titre": livre.titre,
@@ -84,7 +84,7 @@ class MembresModel:
                         "annee": livre.annee,
                         "genre": livre.genre,
                         "statut": livre.statut
-                    } for livre in membre.lesLivresEmpruntes # List of borrowed books, each represented as a dictionary
+                    } for livre in membre.livresEmpruntes # List of borrowed books, each represented as a dictionary
                 ]
             } for membre in listDesObjMembres # List of Membre objects, each represented as a dictionary
         ]

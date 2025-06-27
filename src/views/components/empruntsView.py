@@ -93,8 +93,8 @@ class EmpruntsView:
             messagebox.showerror("Erreur", str(e))
         except QuotaEmpruntDepasseError as e :
             messagebox.showerror("Erreur", str(e))
-        except Exception as e:
-            messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
+        # except Exception as e:
+        #     messagebox.showerror("Erreur", f"Une erreur inattendue est survenue")
     def validerRetour(self, isbn, membreId) :
         try : 
             self._model.retournerLivre(isbn, membreId)

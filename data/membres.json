@@ -2,7 +2,7 @@
     {
         "id": "M001",
         "nom": "Dupont Alice",
-        "lesLivresEmpruntes": [
+        "livresEmpruntes": [
             {
                 "ISBN": "978-0140449136",
                 "titre": "L'Étranger",
@@ -24,7 +24,7 @@
     {
         "id": "M002",
         "nom": "Martin Jean",
-        "lesLivresEmpruntes": [
+        "livresEmpruntes": [
             {
                 "ISBN": "978-2253002023",
                 "titre": "Les Misérables",
@@ -38,12 +38,12 @@
     {
         "id": "M003",
         "nom": "Bernard Claire",
-        "lesLivresEmpruntes": []
+        "livresEmpruntes": []
     },
     {
         "id": "M004",
         "nom": "Petit Luc",
-        "lesLivresEmpruntes": [
+        "livresEmpruntes": [
             {
                 "ISBN": "978-2070413119",
                 "titre": "Madame Bovary",
@@ -57,7 +57,7 @@
     {
         "id": "M005",
         "nom": "Robert Emma",
-        "lesLivresEmpruntes": [
+        "livresEmpruntes": [
             {
                 "ISBN": "978-2253083473",
                 "titre": "Germinal",
