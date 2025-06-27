@@ -6,11 +6,19 @@ if __name__ == "__main__":
 class EmpruntsView:
     def __init__(self, parent, bibliotheque): 
         # Linking the model to the view
-        self._model = None
+        self._model = bibliotheque.getHistoriqueModel()
+        # Creating the frame for the view
         self._frame = Frame(parent)
         self.initUI()
 
     def initUI(self):
+        # Borrowing books section
+        empruntsFrame = Frame(self._frame, bg="lightblue")
+        empruntsFrame.pack(side="left", fill='both', expand=True, padx=10, pady=10)
+
+        # Returnning books section
+        retourFrame = Frame(self._frame, bg="lightgreen")
+        retourFrame.pack(side="left", fill='both', expand=True, padx=10, pady=10)
         return self._frame
 
     def getUI(self):
