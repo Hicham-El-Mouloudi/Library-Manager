@@ -2,8 +2,8 @@
 from json import load, dump
 from enum import Enum
 # custom imports
-from models.Membre import Membre
-from models.Livre import Livre, StatutLivreEnum
+from src.models.Membre import Membre
+from src.models.Livre import Livre, StatutLivreEnum
 
 
 # ----------------------------------------------------------------------------------------

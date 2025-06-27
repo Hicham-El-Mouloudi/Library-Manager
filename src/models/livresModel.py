@@ -2,7 +2,7 @@
 from json import load, dump
 from enum import Enum
 # custom imports
-from models.Livre import Livre, StatutLivreEnum
+from src.models.Livre import Livre, StatutLivreEnum
 
 
 # ----------------------------------------------------------------------------------------
@@ -64,7 +64,8 @@ class LivresModel:
     
     def searchLivre(self, filter = LivreRechercheFiltre.ISBN, value=""): # cette fct est utilisées dans la vue empruntsView.py pour rechercher un livre par son titre, ISBN.
         print("type(filter):", type(filter), "value:", filter)
-        print("searchLivre : called with value : " + filter.value + "\t check : " + str(filter.value == LivreRechercheFiltre.ISBN.value))
+        print("type(LivreRechercheFiltre.ISBN):", type(LivreRechercheFiltre.ISBN), "value:", LivreRechercheFiltre.ISBN)
+        print("searchLivre : called with value : " + filter.value + "\t check : " + str(filter == LivreRechercheFiltre.ISBN))
         match(filter):
             # par titre
             case LivreRechercheFiltre.ISBN:

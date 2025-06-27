@@ -3,9 +3,9 @@ from enum import Enum
 import json
 import time
 # custom imports
-from models.livresModel import LivresModel, LivreRechercheFiltre, LivreInexistantError
-from models.membresModel import MembresModel, MembreRechercheFiltre, MembreInexistantError
-from models.Livre import Livre, StatutLivreEnum
+from src.models.livresModel import LivresModel, LivreRechercheFiltre, LivreInexistantError
+from src.models.membresModel import MembresModel, MembreRechercheFiltre, MembreInexistantError
+from src.models.Livre import Livre, StatutLivreEnum
 
 # ----------------------------------------------------------------------------------------
 # ------------------------------------ LivreIndisponibleError ------------------------------------
