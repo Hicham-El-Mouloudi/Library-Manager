@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import ttk, messagebox
 # custom imports
 from models.livresModel import LivresModel
-from models.Livre import Livre
+from models.Livre import Livre, StatutLivreEnum
 
 
 if __name__ == "__main__":
@@ -51,7 +51,7 @@ class LivresView :
         bookAddFrame = Frame(self._frame, bg="lightcoral")
         bookAddFrame.pack(fill='both', padx=10, pady=10, expand=True)
         # the labels and entries for adding a book
-        labels = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre', 'Statut']
+        labels = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre']
         self._entries = {}
         for label in labels:
             f = Frame(bookAddFrame, bg="lightcoral")
@@ -86,7 +86,7 @@ class LivresView :
     def afficherLivres(self, tableLivres):
         tableLivres.set_children("") # clear the table first
         for livre in self._model.listerLivres() : 
-            tableLivres.insert("", "end", values = list(livre.values()))
+            tableLivres.insert("", "end", values = livre.getValuesList())
 
     def validerSuppression(self,tableLivres) :
         selected = tableLivres.selection() # liste des ID des lignes selectionnée
@@ -105,14 +105,13 @@ class LivresView :
         if any(entry.get() == "" for entry in self._entries.values()):
             messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
             return
-        self._model.addLivre(Livre(
+        self._model.addLivre(
             self._entries['ISBN'].get().strip(),
             self._entries['Titre'].get().strip(),
             self._entries['Auteur'].get().strip(),
             self._entries['Année'].get().strip(),
-            self._entries['Genre'].get().strip(),
-            self._entries['Statut'].get().strip()
-        ))
+            self._entries['Genre'].get().strip() # statut = StatutLivreEnum.DISPONIBLE.value (default)
+        )
         messagebox.showinfo("Succès", "Livre ajouté avec succès")
         # vider les champs
         for entry in _entries:
