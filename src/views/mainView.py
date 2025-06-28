@@ -1,6 +1,7 @@
 # standard library imports
 from tkinter import *
 from tkinter import ttk
+import tkinter.font as tkFont
 # custom imports
 from views.components.livresView import LivresView
 from views.components.empruntsView import EmpruntsView
@@ -15,6 +16,10 @@ class MainView:
         self._bibliotheque = Bibliotheque()
         # create the main window
         self._root = Tk()
+        # Initializing style for the app
+        self._style = ttk.Style()
+        self._style.theme_use("default")
+        self.initStyle()
         # create a Notebook widget to hold the tabs
         self._viewsContainer = ttk.Notebook(self._root)
         self._viewsContainer.pack(fill='both', expand=True)
@@ -38,3 +43,30 @@ class MainView:
 
     def getUI(self):
         return self._root
+
+    def initStyle(self) : 
+        # Notebook style
+        tabFont = tkFont.Font(family="Calibri", size=12)
+        self._style.configure("TNotebook.Tab", font=tabFont, background="#0096c7", foreground="#03045e")
+        self._style.configure("TNotebook", background="#0096c7", borderwidth=0)
+        self._style.map("TNotebook.Tab",
+            background=[
+                ("selected", "#00b4d8"),
+                ("active", "#0077b6")
+            ],#style background
+            foreground=[
+                ("selected", "#caf0f8"),
+                ("active", "#03045e")
+            ] #style text
+        )
+        # treeView style
+        header_font = tkFont.Font(family="Lucida Console", size=14, weight="bold")
+        tree_font = tkFont.Font(family="Maiandra GD", size=12)
+        self._style.configure("Treeview.Heading", font=header_font)
+        self._style.configure("Treeview", font=tree_font)
+        # styling buttons
+        button_font = tkFont.Font(family="Helvetica", size=14)
+        self._style.configure("TButton", font=button_font, foreground="white", background="blue")
+        # stylling labels
+        label_font = tkFont.Font(family="Helvetica", size=14)
+        self._style.configure("TLabel", font=label_font, foreground="darkgreen")
