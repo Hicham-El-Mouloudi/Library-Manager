@@ -46,7 +46,7 @@ pip install matplotlib
 Exécute uniquement le fichier `main.py` pour démarrer l'application :
 
 ```bash
-python main.py
+python src/main.py
 ```
 
 > **Important :** Ne pas exécuter directement les autres fichiers (modèles ou vues) sous peine d'obtenir un message d'erreur volontaire.
