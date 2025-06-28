@@ -53,19 +53,21 @@ class StatisticsModel :
         historyRecordsTimeKeys = historyRecords.keys()
         historyRecordsActions = [ historyRecord["action"] for historyRecord in historyRecords.values() ]
         # fixing time range
+        currentDateTime = datetime.now().timestamp() * 1000 # unix timestamp in milliseconds
         thirtyDaysAgo = int((datetime.now() - timedelta(days=30)).timestamp() * 1000 )# unix timestamp for 30 days in MILLISECONDS !!!!
         # creating a zeros array with 30 elements
         data = [0 for i in range(30)] # each element contains the number of emprunts, in that day
 
         # starting from 'thirtyDaysAgo' , each record in this intervalle, we add 1 in the corresponding day (array elemnt)
         for time, action in zip(historyRecordsTimeKeys, historyRecordsActions) : 
+            time = int(time)
             # NOTE : Here "time" is a unix timestamp in MILLISECONDS !!! used as id for each record
-            if int(time) >= thirtyDaysAgo : # Check if the record is concerned 
+            if time >= thirtyDaysAgo and time <= currentDateTime: # Check if the record is concerned 
                 # selecting action = "emprunt" -> LibraryActionEnum.EMPRUNT
                 if action == LibraryActionEnum.EMPRUNT.value : 
 
                     # Here we will find the corresponding day of the record -> the index of the day
-                    index = math.floor(time / 86400000) # 86400000 is number of milli-seconds per day
+                    index = math.floor((time - thirtyDaysAgo) / 86400000) # 86400000 is number of milli-seconds per day
                     # add to data
                     data[index] += 1
         return data
