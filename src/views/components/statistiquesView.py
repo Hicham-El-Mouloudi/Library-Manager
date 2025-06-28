@@ -26,7 +26,12 @@ class StatistiquesView:
         axe.set_title("Répartition des livres par genre")
 
     def getHistogrammeTop10Auteur(self):
-        pass
+        authors, counts = self._model.getHistogrammeData()
+        fig, axe = plt.subplots()
+        axe.bar(authors, counts, color='skyblue')
+        axe.set_title("Top 10 des auteurs les plus populaires")
+        axe.set_xlabel("Auteur")
+        axe.set_ylabel("Nombre d'emprunts")
 
     def getCourbeTemporelle(self):
         pass
