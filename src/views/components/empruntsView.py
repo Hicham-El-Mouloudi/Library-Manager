@@ -1,5 +1,6 @@
 # standard imports
 from tkinter import *
+from tkinter import ttk
 from tkinter import messagebox
 # custom imports
 from models.livresModel import LivreInexistantError
@@ -43,7 +44,7 @@ class EmpruntsView:
         empruntsMembreIdEntry = Entry(empruntsMemberFrame, width=40)
         empruntsMembreIdEntry.pack(side="left", pady=5, fill="both", expand=True)
         # button to borrow a book
-        empruntsButton = Button(empruntsFrame, text="Emprunter le livre", command=lambda: self.validerEmprunt(empruntsISBNEntry.get(), empruntsMembreIdEntry.get()))
+        empruntsButton = ttk.Button(empruntsFrame, text="Emprunter le livre", command=lambda: self.validerEmprunt(empruntsISBNEntry.get(), empruntsMembreIdEntry.get()))
         empruntsButton.pack(pady=5)
 
         # --------------------------------------Returnning books section
@@ -68,12 +69,12 @@ class EmpruntsView:
         retourMembreIdEntry = Entry(retourMemberFrame, width=40)
         retourMembreIdEntry.pack(side="left", pady=5, fill="both", expand=True)
         # button to return a book
-        retourButton = Button(retourFrame, text="Retourner le livre", command=lambda: self.validerRetour(retourISBNEntry.get(), retourMembreIdEntry.get()))
+        retourButton = ttk.Button(retourFrame, text="Retourner le livre", command=lambda: self.validerRetour(retourISBNEntry.get(), retourMembreIdEntry.get()))
         retourButton.pack(pady=5)
 
         #-------------------- Save button
         # ------------------------------------------------------------------------------------------
-        saveButton = Button(self._frame, text="Enregistrer les emprunts", command=self.saveData)
+        saveButton = ttk.Button(self._frame, text="Enregistrer les emprunts", command=self.saveData)
         saveButton.pack(pady=10)
 
         return self._frame

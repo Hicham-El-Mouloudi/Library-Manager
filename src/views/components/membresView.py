@@ -37,7 +37,7 @@ class MembresView:
         # ---------------- deleting a member
         deleteFrame = Frame(self._frame, bg="lightgreen", height=100)
         deleteFrame.pack(fill='both', padx=10, pady=10)
-        deleteButton = Button(deleteFrame, width=36, text="Supprimer Les Membres Selectionnés", command=lambda: self.validerSuppression(tableMembres))
+        deleteButton = ttk.Button(deleteFrame, width=36, text="Supprimer Les Membres Selectionnés", command=lambda: self.validerSuppression(tableMembres))
         deleteButton.pack()
 
         # ---------------- adding a member
@@ -53,14 +53,14 @@ class MembresView:
             entry = Entry(f, width=40)
             entry.pack(side='left', padx=5, pady=5)
             self._entries[label] = entry
-        addButton = Button(
+        addButton = ttk.Button(
             memberAddFrame,
             width=36,
             text="Ajouter Un Membre",
             command=lambda: self.validerAjoutMembre(tableMembres, self._entries.values())
         )
         addButton.pack(side='top', padx=5, pady=5)
-        saveButton = Button(
+        saveButton = ttk.Button(
             memberAddFrame,
             width=36,
             text="Enregistrer Les Membres",

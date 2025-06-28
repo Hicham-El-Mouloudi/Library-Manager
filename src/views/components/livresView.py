@@ -43,7 +43,7 @@ class LivresView :
         deleteFrame = Frame(self._frame, bg="lightgreen", height=100)
         deleteFrame.pack(fill='both', padx=10, pady=10)
         # the button to del -> binding it to delete the selected livres
-        deleteButton = Button(deleteFrame, width=36, text="Supprimer Les Elements Selectionnés", command= lambda : self.validerSuppression(tableLivres))
+        deleteButton = ttk.Button(deleteFrame, width=36, text="Supprimer Les Elements Selectionnés", command= lambda : self.validerSuppression(tableLivres))
         deleteButton.pack()
 
 
@@ -62,7 +62,7 @@ class LivresView :
             entry.pack(side='left', padx=5, pady=5)
             self._entries[label] = entry
         # the button to add a book
-        addButton = Button(
+        addButton = ttk.Button(
             bookAddFrame,
             width=36,
             text="Ajouter Un Livre",
@@ -70,7 +70,7 @@ class LivresView :
         )
         addButton.pack(side='top', padx=5, pady=5)
         # # saving the books to the JSON file
-        saveButton = Button(
+        saveButton = ttk.Button(
             bookAddFrame,
             width=36,
             text="Enregistrer Les Livres",
