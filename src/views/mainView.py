@@ -59,14 +59,30 @@ class MainView:
                 ("active", "#03045e")
             ] #style text
         )
+
         # treeView style
         header_font = tkFont.Font(family="Lucida Console", size=14, weight="bold")
         tree_font = tkFont.Font(family="Maiandra GD", size=12)
-        self._style.configure("Treeview.Heading", font=header_font)
-        self._style.configure("Treeview", font=tree_font)
+        self._style.configure("Treeview.Heading", 
+                            font=header_font,
+                            foreground="#ffffff",    # text color
+                            background="#0077b6")    # background color
+
+        self._style.configure("Treeview", 
+                            font=tree_font,
+                            foreground="#03045e",    # text color
+                            background="#caf0f8")    # background color
+
         # styling buttons
         button_font = tkFont.Font(family="Helvetica", size=14)
-        self._style.configure("TButton", font=button_font, foreground="white", background="blue")
+        self._style.configure("TButton",
+                            font=button_font,
+                            foreground="#023e8a",
+                            background="#48cae4")
+
+        self._style.map("TButton",
+                        foreground=[('active', '#023e8a')],
+                        background=[('active', '#90e0ef')])
         # stylling labels
         label_font = tkFont.Font(family="Helvetica", size=14)
         self._style.configure("TLabel", font=label_font, foreground="darkgreen")
