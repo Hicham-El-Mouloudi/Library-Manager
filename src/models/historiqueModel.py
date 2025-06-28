@@ -154,3 +154,6 @@ class HistoriqueModel:
             "idMembre" : membreId,
             "action" : action
         }
+
+    def getHistoriqueData(self) : 
+        return self._emprunts
