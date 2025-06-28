@@ -15,7 +15,7 @@
 
 
 
-# 🧩 Requirements fonctionnels :
+# Requirements fonctionnels :
 
 ## 1. Gestion des Livres
 - Ajouter/supprimer un livre (ISBN, titre, auteur, année, genre, statut)

@@ -75,6 +75,10 @@ data/
   historique.json
 ```
 
+> **Note :** L'application est fournie avec des données de test situées dans le répertoire `/data`.  
+> Vous pouvez les supprimer directement depuis l'application (et non en modifiant les fichiers) pour démarrer avec vos propres données.
+
+
 ## Conseils
 
 * Ne modifiez pas les fichiers JSON manuellement.
