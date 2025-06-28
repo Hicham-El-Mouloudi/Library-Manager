@@ -34,4 +34,9 @@ class StatistiquesView:
         axe.set_ylabel("Nombre d'emprunts")
 
     def getCourbeTemporelle(self):
-        pass
+        activity = self._model.getTimeDiagrammeData()
+        fig, axe = plt.subplots()
+        axe.plot(range(1, 31), activity, marker='o')
+        axe.set_title("Activité des emprunts (30 derniers jours)")
+        axe.set_xlabel("Jours (du passé à aujourd'hui)")
+        axe.set_ylabel("Nombre d'emprunts")
