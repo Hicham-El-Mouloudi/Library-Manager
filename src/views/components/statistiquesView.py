@@ -9,7 +9,7 @@ if __name__ == "__main__":
 class StatistiquesView:
     def __init__(self, parent, bibliotheque):
         # Linking the model to the view
-        self._model = None
+        self._model = bibliotheque.getStatisticsModel()
         self._frame = Frame(parent)
         self.initUI()
 
@@ -20,7 +20,10 @@ class StatistiquesView:
         return self._frame
     
     def getLivreParGenreDiagrammeCirculaire(self) : 
-        pass
+        labels, sizes = stats_model.getPieDiagrammeData()
+        fig, axe = plt.subplots()
+        axe.pie(sizes, labels=labels, autopct='%1.1f%%')
+        axe.set_title("Répartition des livres par genre")
 
     def getHistogrammeTop10Auteur(self):
         pass
