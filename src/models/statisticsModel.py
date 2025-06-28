@@ -1,10 +1,12 @@
 # standard libs
 from collections import Counter # to count the number of repetitions of each element in an array
+from datetime import datetime, timedelta
+import math
 # custom libs
 from src.models.livresModel import LivresModel, LivreRechercheFiltre
 from src.models.Livre import Livre
 from src.models.membresModel import MembresModel
-from src.models.historiqueModel import HistoriqueModel
+from src.models.historiqueModel import HistoriqueModel, LibraryActionEnum
 
 
 
@@ -39,6 +41,34 @@ class StatisticsModel :
                 continue # on compte seulemnt les livres valable
         # Calculating the number of oocurences of each authr and reurn top 10
         lesAuteursTop10 = Counter(lesAuteurs).most_common(10) # this is a list of tuples
-        
+
         return lesAuteursTop10
+
+    def getTimeDiagrammeData(self) : 
+        # getting all history
+        historyRecords = self._historiqueModel.getHistoriqueData()
+        historyRecordsTimeKeys = historyRecords.keys()
+        historyRecordsActions = [ historyRecord["action"] for historyRecord in historyRecords.values() ]
+        # fixing time range
+        currentTime = int(datetime.now().timestamp() * 1000) # current unix timestamp in MILLISECONDS !!!
+        thirtyDaysAgo = int((currentTime - timedelta(days=30)).timestamp() * 1000 )# unix timestamp for 30 days in MILLISECONDS !!!!
+        # creating a zeros array with 30 elements
+        data = [0 for i in range(30)] # each element contains the number of emprunts, in that day
+
+        # starting from 'thirtyDaysAgo' , each record in this intervalle, we add 1 in the corresponding day (array elemnt)
+        for time, action in zip(historyRecordsTimeKeys, historyRecordsActions) : 
+            # NOTE : Here "time" is a unix timestamp in MILLISECONDS !!! used as id for each record
+            if int(time) >= thirtyDaysAgo : # Check if the record is concerned 
+                # selecting action = "emprunt" -> LibraryActionEnum.EMPRUNT
+                if action == LibraryActionEnum.EMPRUNT.value : 
+
+                    # Here we will find the corresponding day of the record -> the index of the day
+                    index = math.floor(time / 86400000) # 86400000 is number of milli-seconds per day
+                    # add to data
+                    data[index] += 1
+        return data
+
+
+
+
         
