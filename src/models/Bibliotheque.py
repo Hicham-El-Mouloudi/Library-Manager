@@ -1,8 +1,8 @@
-from src.models.Livre import Livre
-from src.models.livresModel import LivresModel
-from src.models.membresModel import MembresModel
-from src.models.historiqueModel import HistoriqueModel
-from src.models.statisticsModel import StatisticsModel
+from models.Livre import Livre
+from models.livresModel import LivresModel
+from models.membresModel import MembresModel
+from models.historiqueModel import HistoriqueModel
+from models.statisticsModel import StatisticsModel
 
 
 if __name__ == "__main__":

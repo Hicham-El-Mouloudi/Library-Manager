@@ -3,7 +3,7 @@ from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 # custom libs
-from src.models.statisticsModel import StatisticsModel
+from models.statisticsModel import StatisticsModel
 
 if __name__ == "__main__":
     exit("statistiquesView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
@@ -11,13 +11,13 @@ if __name__ == "__main__":
 class StatistiquesView:
     def __init__(self, parent, bibliotheque):
         # Setting color palette
-        plt.rcParams["axes.prop_cycle"] = cycler(color=["#3498db", "#e74c3c", "#2ecc71", "#f1c40f", "#9b59b6"]) 
+        plt.rcParams["axes.prop_cycle"] = plt.cycler(color=["#3498db", "#e74c3c", "#2ecc71", "#f1c40f", "#9b59b6"]) 
         # Linking the model to the view
         self._model = bibliotheque.getStatisticsModel()
         self._frame = Frame(parent)
         self.initUI()
 
-    def Ilm(self):
+    def initUI(self):
         # This frame contains all our charts
         outerFrame = Frame(self._frame, bg="lightblue")
         outerFrame.pack(fill='both', expand=True, padx=10, pady=10)
@@ -33,8 +33,8 @@ class StatistiquesView:
         scrollbar.pack(side="right", fill="y")
         # Setting up UI
         self.initLivreParGenreDiagrammeCirculaire(containerFrame)
-        self.initHistogrammeTop10Auteur(containerFrame)
         self.initCourbeTemporelle(containerFrame)
+        self.initHistogrammeTop10Auteur(containerFrame)
 
         return self._frame
         
@@ -42,7 +42,7 @@ class StatistiquesView:
         return self._frame
     
     def initLivreParGenreDiagrammeCirculaire(self, parent) : 
-        labels, sizes = stats_model.getPieDiagrammeData()
+        labels, sizes = self._model.getPieDiagrammeData()
         fig, axe = plt.subplots()
         axe.pie(sizes, labels=labels, autopct='%1.1f%%')
         axe.set_title("Répartition des livres par genre")

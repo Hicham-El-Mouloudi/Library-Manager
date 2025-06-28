@@ -2,8 +2,8 @@
 from tkinter import *
 from tkinter import ttk, messagebox
 # custom imports
-from src.models.livresModel import LivresModel
-from src.models.Livre import Livre, StatutLivreEnum
+from models.livresModel import LivresModel
+from models.Livre import Livre, StatutLivreEnum
 
 
 if __name__ == "__main__":

@@ -3,10 +3,10 @@ from collections import Counter # to count the number of repetitions of each ele
 from datetime import datetime, timedelta
 import math
 # custom libs
-from src.models.livresModel import LivresModel, LivreRechercheFiltre
-from src.models.Livre import Livre
-from src.models.membresModel import MembresModel
-from src.models.historiqueModel import HistoriqueModel, LibraryActionEnum
+from models.livresModel import LivresModel, LivreRechercheFiltre
+from models.Livre import Livre
+from models.membresModel import MembresModel
+from models.historiqueModel import HistoriqueModel, LibraryActionEnum
 
 
 
@@ -51,8 +51,7 @@ class StatisticsModel :
         historyRecordsTimeKeys = historyRecords.keys()
         historyRecordsActions = [ historyRecord["action"] for historyRecord in historyRecords.values() ]
         # fixing time range
-        currentTime = int(datetime.now().timestamp() * 1000) # current unix timestamp in MILLISECONDS !!!
-        thirtyDaysAgo = int((currentTime - timedelta(days=30)).timestamp() * 1000 )# unix timestamp for 30 days in MILLISECONDS !!!!
+        thirtyDaysAgo = int((datetime.now() - timedelta(days=30)).timestamp() * 1000 )# unix timestamp for 30 days in MILLISECONDS !!!!
         # creating a zeros array with 30 elements
         data = [0 for i in range(30)] # each element contains the number of emprunts, in that day
 

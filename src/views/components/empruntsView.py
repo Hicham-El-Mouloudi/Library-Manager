@@ -2,9 +2,9 @@
 from tkinter import *
 from tkinter import messagebox
 # custom imports
-from src.models.livresModel import LivreInexistantError
-from src.models.membresModel import MembreInexistantError
-from src.models.historiqueModel import LivreIndisponibleError, LivreDisponibleError, QuotaEmpruntDepasseError
+from models.livresModel import LivreInexistantError
+from models.membresModel import MembreInexistantError
+from models.historiqueModel import LivreIndisponibleError, LivreDisponibleError, QuotaEmpruntDepasseError
 
 if __name__ == "__main__":
     exit("empruntsView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
