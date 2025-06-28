@@ -137,12 +137,14 @@ class HistoriqueModel:
                 # # # # ------>  Return the book
                 livre.statut = StatutLivreEnum.DISPONIBLE.value
                 # # # # ------> remove the book from the member's borrowed books list
-                if livre in membre.livresEmpruntes:
-                    membre.livresEmpruntes.remove(livre) # removing the book from the member's borrowed books list
-                else:
-                    raise LivreInexistantError(f"Le livre {livre.titre} n'est pas dans la liste des livres empruntés par le membre {membre.nom}.")
-                # # # # --------------> Recording the return
-                self.addNewRecord(livre.ISBN, membre.id, LibraryActionEnum.RETOUR.value)
+                for livre in membre.livresEmpruntes : 
+                    if livre.ISBN == isbn : 
+                        membre.livresEmpruntes.remove(livre) # removing the book from the member's borrowed books list
+                        # # # # --------------> Recording the return
+                        self.addNewRecord(livre.ISBN, membre.id, LibraryActionEnum.RETOUR.value)
+                        return
+                        
+                raise LivreInexistantError(f"Le livre {livre.titre} n'est pas dans la liste des livres empruntés par le membre {membre.nom}.")
 
             except MembreInexistantError as e:
                 raise e # the error captured will be forwarded to the caller
