@@ -20,24 +20,24 @@ class EmpruntsView:
         self.initUI()
 
     def initUI(self):
-        outerFrame = Frame(self._frame, bg="#caf0f8", height=100)
+        outerFrame = Frame(self._frame, bg="white", height=100)
         outerFrame.pack(fill='x', expand=True, padx=10, pady=10)
         #-------------------------------- Borrowing books section
         # ------------------------------------------------------------------------------------------
-        empruntsFrame = Frame(outerFrame, bg="lightblue")
+        empruntsFrame = Frame(outerFrame, bg="white")
         empruntsFrame.pack(side="left", fill='both', expand=True, padx=10, pady=10)
         # sub-components for borrowing books
-        empruntsContainerFrame = Frame(empruntsFrame, bg="lightyellow", width=400, height=200)
+        empruntsContainerFrame = Frame(empruntsFrame, bg="white", width=400, height=200)
         empruntsContainerFrame.pack(pady=10)
         # labels and entries for borrowing books
-        empruntsIsbnFrame = Frame(empruntsContainerFrame, bg="lightblue")
+        empruntsIsbnFrame = Frame(empruntsContainerFrame, bg="white")
         empruntsIsbnFrame.pack(pady=5, fill="both", expand=True)
         empruntsISBNLabel = ttk.Label(empruntsIsbnFrame, text="ISBN du livre à emprunter:", width=26)
         empruntsISBNLabel.pack(side="left", pady=5, fill="both", expand=True)
         empruntsISBNEntry = Entry(empruntsIsbnFrame, width=40)
         empruntsISBNEntry.pack(side="left", pady=5, fill="both", expand=True)
         #
-        empruntsMemberFrame = Frame(empruntsContainerFrame, bg="lightblue")
+        empruntsMemberFrame = Frame(empruntsContainerFrame, bg="white")
         empruntsMemberFrame.pack(pady=5, fill="both", expand=True)
         empruntsMembreIdLabel = ttk.Label(empruntsMemberFrame, text="ID du membre:", width=26)
         empruntsMembreIdLabel.pack(side="left", pady=5, fill="both", expand=True)
@@ -49,20 +49,20 @@ class EmpruntsView:
 
         # --------------------------------------Returnning books section
         # ------------------------------------------------------------------------------------------
-        retourFrame = Frame(outerFrame, bg="lightgreen")
+        retourFrame = Frame(outerFrame, bg="white")
         retourFrame.pack(side="left", fill='both', expand=True, padx=10, pady=10)
         # sub-components for returning books
-        retourContainerFrame = Frame(retourFrame, bg="lightyellow", width=400, height=200)
+        retourContainerFrame = Frame(retourFrame, bg="white", width=400, height=200)
         retourContainerFrame.pack(pady=10)
         # labels and entries for returning books
-        retourIsbnFrame = Frame(retourContainerFrame, bg="lightblue")
+        retourIsbnFrame = Frame(retourContainerFrame, bg="white")
         retourIsbnFrame.pack(pady=5, fill="both", expand=True)
         retourISBNLabel = ttk.Label(retourIsbnFrame, text="ISBN du livre à retourner:", width=26)
         retourISBNLabel.pack(side="left", pady=5, fill="both", expand=True)
         retourISBNEntry = Entry(retourIsbnFrame, width=40)
         retourISBNEntry.pack(side="left", pady=5, fill="both", expand=True)
         #
-        retourMemberFrame = Frame(retourContainerFrame, bg="lightblue")
+        retourMemberFrame = Frame(retourContainerFrame, bg="white")
         retourMemberFrame.pack(pady=5, fill="both", expand=True)
         retourMembreIdLabel = ttk.Label(retourMemberFrame, text="ID du membre:", width=26)
         retourMembreIdLabel.pack(side="left", pady=5, fill="both", expand=True)
