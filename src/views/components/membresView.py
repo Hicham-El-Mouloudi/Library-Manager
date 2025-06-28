@@ -63,7 +63,7 @@ class MembresView:
         saveButton = ttk.Button(
             memberAddFrame,
             width=36,
-            text="Enregistrer Les Membres",
+            text="Enregistrer",
             command=lambda: (self._model.saveData(), messagebox.showinfo("Membres", "Les membres ont été sauvegardés avec succès !"))
         )
         saveButton.pack(side='right', padx=5, pady=5)

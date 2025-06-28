@@ -73,7 +73,7 @@ class LivresView :
         saveButton = ttk.Button(
             bookAddFrame,
             width=36,
-            text="Enregistrer Les Livres",
+            text="Enregistrer",
             command=lambda: (self._model.saveData(), messagebox.showinfo("Livres", "Les livres ont été sauvegardés avec succès !"))
         )
         saveButton.pack(side='right', padx=5, pady=5)
