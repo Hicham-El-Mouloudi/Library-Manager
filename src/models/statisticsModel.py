@@ -43,7 +43,9 @@ class StatisticsModel :
         lesAuteursTop10 = Counter(lesAuteurs).most_common(10) # this is a list of tuples
 
         # the first list returned has authors names, the second how many borrowed book
-        return [ element[0] for element in lesAuteursTop10 ], [ element[1] for element in lesAuteursTop10]
+        authors = [ element[0] for element in lesAuteursTop10 ]
+        counts = [ element[1] for element in lesAuteursTop10]
+        return authors, counts
 
     def getTimeDiagrammeData(self) : 
         # getting all history
