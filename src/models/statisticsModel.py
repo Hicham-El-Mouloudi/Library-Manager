@@ -57,7 +57,7 @@ class StatisticsModel :
         historyRecordsActions = [ historyRecord["action"] for historyRecord in historyRecords.values() ]
         # fixing time range
         currentDateTime = datetime.now().timestamp() * 1000 # unix timestamp in milliseconds
-        thirtyDaysAgo = int((datetime.now() - timedelta(days=30)).timestamp() * 1000 )# unix timestamp for 30 days in MILLISECONDS !!!!
+        thirtyDaysAgo = int((datetime.now() - timedelta(days=29)).timestamp() * 1000 )# unix timestamp for 30 days in MILLISECONDS !!!!
         # creating a zeros array with 30 elements
         data = [0 for i in range(30)] # each element contains the number of emprunts, in that day
 
@@ -73,7 +73,15 @@ class StatisticsModel :
                     index = math.floor((time - thirtyDaysAgo) / 86400000) # 86400000 is number of milli-seconds per day
                     # add to data
                     data[index] += 1
-        return data
+        # generating dates labels for the histogram
+        labels = []
+        aDay = timedelta(days=1)
+        currentDateTime = datetime.utcfromtimestamp(currentDateTime/1000)
+        thirtyDaysAgo = datetime.utcfromtimestamp(thirtyDaysAgo/1000)
+        while thirtyDaysAgo <= currentDateTime : 
+            labels.append(thirtyDaysAgo.strftime("%d %b"))
+            thirtyDaysAgo += aDay
+        return labels , data
 
 
 

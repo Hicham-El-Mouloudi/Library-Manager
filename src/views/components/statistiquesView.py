@@ -55,12 +55,13 @@ class StatistiquesView:
         canvas.get_tk_widget().pack(side="left" ,fill="both", expand=True)
 
     def initCourbeTemporelle(self, parent):
-        activity = self._model.getTimeDiagrammeData()
-        fig, axe = plt.subplots()
-        axe.plot(range(1, 31), activity, marker='o')
+        labels, activity = self._model.getTimeDiagrammeData()
+        fig, axe = plt.subplots(figsize=(20, 4))
+        axe.plot(labels, activity, marker='o')
         axe.set_title("Activité des emprunts (30 derniers jours)")
         axe.set_xlabel("Jours (du passé à aujourd'hui)")
         axe.set_ylabel("Nombre d'emprunts")
+        axe.tick_params(axis='x', labelrotation=90)
         # 
         canvas = FigureCanvasTkAgg(fig, parent)
         canvas.draw()
