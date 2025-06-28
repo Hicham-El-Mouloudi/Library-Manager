@@ -32,14 +32,14 @@ class EmpruntsView:
         # labels and entries for borrowing books
         empruntsIsbnFrame = Frame(empruntsContainerFrame, bg="lightblue")
         empruntsIsbnFrame.pack(pady=5, fill="both", expand=True)
-        empruntsISBNLabel = Label(empruntsIsbnFrame, text="ISBN du livre à emprunter:", width=26)
+        empruntsISBNLabel = ttk.Label(empruntsIsbnFrame, text="ISBN du livre à emprunter:", width=26)
         empruntsISBNLabel.pack(side="left", pady=5, fill="both", expand=True)
         empruntsISBNEntry = Entry(empruntsIsbnFrame, width=40)
         empruntsISBNEntry.pack(side="left", pady=5, fill="both", expand=True)
         #
         empruntsMemberFrame = Frame(empruntsContainerFrame, bg="lightblue")
         empruntsMemberFrame.pack(pady=5, fill="both", expand=True)
-        empruntsMembreIdLabel = Label(empruntsMemberFrame, text="ID du membre:", width=26)
+        empruntsMembreIdLabel = ttk.Label(empruntsMemberFrame, text="ID du membre:", width=26)
         empruntsMembreIdLabel.pack(side="left", pady=5, fill="both", expand=True)
         empruntsMembreIdEntry = Entry(empruntsMemberFrame, width=40)
         empruntsMembreIdEntry.pack(side="left", pady=5, fill="both", expand=True)
@@ -57,14 +57,14 @@ class EmpruntsView:
         # labels and entries for returning books
         retourIsbnFrame = Frame(retourContainerFrame, bg="lightblue")
         retourIsbnFrame.pack(pady=5, fill="both", expand=True)
-        retourISBNLabel = Label(retourIsbnFrame, text="ISBN du livre à retourner:", width=26)
+        retourISBNLabel = ttk.Label(retourIsbnFrame, text="ISBN du livre à retourner:", width=26)
         retourISBNLabel.pack(side="left", pady=5, fill="both", expand=True)
         retourISBNEntry = Entry(retourIsbnFrame, width=40)
         retourISBNEntry.pack(side="left", pady=5, fill="both", expand=True)
         #
         retourMemberFrame = Frame(retourContainerFrame, bg="lightblue")
         retourMemberFrame.pack(pady=5, fill="both", expand=True)
-        retourMembreIdLabel = Label(retourMemberFrame, text="ID du membre:", width=26)
+        retourMembreIdLabel = ttk.Label(retourMemberFrame, text="ID du membre:", width=26)
         retourMembreIdLabel.pack(side="left", pady=5, fill="both", expand=True)
         retourMembreIdEntry = Entry(retourMemberFrame, width=40)
         retourMembreIdEntry.pack(side="left", pady=5, fill="both", expand=True)

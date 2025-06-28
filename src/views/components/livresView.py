@@ -56,7 +56,7 @@ class LivresView :
         for label in labels:
             f = Frame(bookAddFrame, bg="lightcoral")
             f.pack(side='top', padx=5, pady=5)
-            lbl = Label(f, text=label, width=10)
+            lbl = ttk.Label(f, text=label, width=10)
             lbl.pack(side='left', padx=5, pady=5)
             entry = Entry(f, width=40)
             entry.pack(side='left', padx=5, pady=5)
