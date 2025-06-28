@@ -78,6 +78,11 @@ data/
 > **Note :** L'application est fournie avec des données de test situées dans le répertoire `/data`.  
 > Vous pouvez les supprimer directement depuis l'application (et non en modifiant les fichiers) pour démarrer avec vos propres données.
 
+## Documentation en ligne
+
+La documentation complète du projet est disponible à l’adresse suivante :
+
+👉 [https://hicham-el-mouloudi.github.io/Projects-Documentations/](https://hicham-el-mouloudi.github.io/Projects-Documentations/)
 
 ## Conseils
 
