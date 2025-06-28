@@ -8,6 +8,8 @@ if __name__ == "__main__":
 
 class StatistiquesView:
     def __init__(self, parent, bibliotheque):
+        # Setting color palette
+        plt.rcParams["axes.prop_cycle"] = cycler(color=["#3498db", "#e74c3c", "#2ecc71", "#f1c40f", "#9b59b6"]) 
         # Linking the model to the view
         self._model = bibliotheque.getStatisticsModel()
         self._frame = Frame(parent)
