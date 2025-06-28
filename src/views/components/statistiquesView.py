@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("statistiquesView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 from tkinter import *
 from tkinter import ttk
 import matplotlib.pyplot as plt
@@ -5,8 +8,6 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 # custom libs
 from models.statisticsModel import StatisticsModel
 
-if __name__ == "__main__":
-    exit("statistiquesView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
 
 class StatistiquesView:
     def __init__(self, parent, bibliotheque):

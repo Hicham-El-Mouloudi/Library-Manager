@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("historiqueModel.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 # standard imports
 from enum import Enum
 import json

@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("Bibliotheque.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 from models.Livre import Livre
 from models.livresModel import LivresModel
 from models.membresModel import MembresModel

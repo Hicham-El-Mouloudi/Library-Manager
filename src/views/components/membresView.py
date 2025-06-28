@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("membresView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 # standard library imports
 from tkinter import *
 from tkinter import ttk, messagebox
@@ -6,8 +9,6 @@ from models.membresModel import MembresModel
 from models.Membre import Membre
 
 
-if __name__ == "__main__":
-    exit("membresView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
 
 class MembresView:
     def __init__(self, parent, bibliotheque):

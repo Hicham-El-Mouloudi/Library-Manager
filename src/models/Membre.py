@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("Membre.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 from enum import Enum
 
 # ----------------------------------------------------------------------------------------

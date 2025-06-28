@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("statisticsModel.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 # standard libs
 from collections import Counter # to count the number of repetitions of each element in an array
 from datetime import datetime, timedelta

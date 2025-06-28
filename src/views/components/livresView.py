@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("livresView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 # standard library imports
 from tkinter import *
 from tkinter import ttk, messagebox
@@ -6,8 +9,6 @@ from models.livresModel import LivresModel
 from models.Livre import Livre, StatutLivreEnum
 
 
-if __name__ == "__main__":
-    exit("livresView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
 
 class LivresView : 
     def __init__(self, parent, bibliotheque): 

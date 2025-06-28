@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("empruntsView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 # standard imports
 from tkinter import *
 from tkinter import ttk
@@ -7,8 +10,7 @@ from models.livresModel import LivreInexistantError
 from models.membresModel import MembreInexistantError
 from models.historiqueModel import LivreIndisponibleError, LivreDisponibleError, QuotaEmpruntDepasseError
 
-if __name__ == "__main__":
-    exit("empruntsView.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 
 class EmpruntsView:
     def __init__(self, parent, bibliotheque): 

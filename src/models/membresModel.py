@@ -1,3 +1,6 @@
+if __name__ == "__main__":
+    exit("membresModel.py : Ce fichier ne peut pas être exécuté directement. Veuillez exécuter le fichier main.py.")
+
 # standard libs
 from json import load, dump
 from enum import Enum
