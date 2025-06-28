@@ -25,13 +25,13 @@ class StatisticsModel :
         livresList = self._livresModel.getLivresList()
         # getting all "genre" of books
         genres = [livre.genre for livre in livresList]
-        return Counter(genres)
+        return Counter(genres).keys(), Counter(genres).values()
 
     def getHistogrammeData(self) : 
         # getting all history
         historyRecords = self._historiqueModel.getHistoriqueData()
-        # list of all ISBN
-        lesISBN = [historyRecord["ISBN"] for historyRecord in historyRecords.values()]
+        # list of all ISBN that correspond to "emprunt" action
+        lesISBN = [historyRecord["ISBN"] for historyRecord in historyRecords.values() if historyRecord["action"] == LibraryActionEnum.EMPRUNT.value]
         # replace each "ISBN" with its "Author"
         lesAuteurs = []
         for isbn in lesISBN : 
@@ -42,7 +42,8 @@ class StatisticsModel :
         # Calculating the number of oocurences of each authr and reurn top 10
         lesAuteursTop10 = Counter(lesAuteurs).most_common(10) # this is a list of tuples
 
-        return lesAuteursTop10
+        # the first list returned has authors names, the second how many borrowed book
+        return [ element[0] for element in lesAuteursTop10 ], [ element[1] for element in lesAuteursTop10]
 
     def getTimeDiagrammeData(self) : 
         # getting all history
