@@ -2,6 +2,7 @@ from src.models.Livre import Livre
 from src.models.livresModel import LivresModel
 from src.models.membresModel import MembresModel
 from src.models.historiqueModel import HistoriqueModel
+from src.models.statisticsModel import StatisticsModel
 
 
 if __name__ == "__main__":
@@ -14,6 +15,7 @@ class Bibliotheque :
         self._livres = LivresModel()
         self._membres = MembresModel()
         self._historique = HistoriqueModel(self._membres, self._livres, self._empruntsQuota)
+        self._statistics = StatisticsModel(self._historique, self._membres, self._livres)
 
     def getLivresModel(self):
         # Return the LivresModel instance
@@ -26,3 +28,7 @@ class Bibliotheque :
     def getHistoriqueModel(self):
         # Return the HistoriqueModel instance
         return self._historique
+
+    def getStatisticsModel(self) : 
+        # Return the StatisticsModel instance
+        return self._statistics
