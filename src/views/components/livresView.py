@@ -20,7 +20,7 @@ class LivresView :
 
     def initUI(self):
         # ---------------- lister les livres
-        booksVisualisationFrame = Frame(self._frame, bg="#caf0f8", height=200)
+        booksVisualisationFrame = Frame(self._frame, bg="#caf0f8", height=500)
         booksVisualisationFrame.pack(fill='x', padx=10, pady=10)
         # # adding a treeView to list books
         _columns = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre', 'Statut']
@@ -40,7 +40,7 @@ class LivresView :
 
 
         # ---------------- deleting a book
-        deleteFrame = Frame(self._frame, bg="lightgreen", height=100)
+        deleteFrame = Frame(self._frame, bg="white", height=100)
         deleteFrame.pack(fill='both', padx=10, pady=10)
         # the button to del -> binding it to delete the selected livres
         deleteButton = ttk.Button(deleteFrame, width=36, text="Supprimer Les Elements Selectionnés", command= lambda : self.validerSuppression(tableLivres))
@@ -48,13 +48,13 @@ class LivresView :
 
 
         # ---------------- adding a book
-        bookAddFrame = Frame(self._frame, bg="lightcoral")
+        bookAddFrame = Frame(self._frame, bg="white")
         bookAddFrame.pack(fill='both', padx=10, pady=10, expand=True)
         # the labels and entries for adding a book
         labels = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre']
         self._entries = {}
         for label in labels:
-            f = Frame(bookAddFrame, bg="lightcoral")
+            f = Frame(bookAddFrame, bg="white")
             f.pack(side='top', padx=5, pady=5)
             lbl = ttk.Label(f, text=label, width=10)
             lbl.pack(side='left', padx=5, pady=5)

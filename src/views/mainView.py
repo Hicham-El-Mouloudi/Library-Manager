@@ -56,7 +56,7 @@ class MainView:
             ],#style background
             foreground=[
                 ("selected", "#caf0f8"),
-                ("active", "#03045e")
+                ("active", "#caf0f8")
             ] #style text
         )
 
