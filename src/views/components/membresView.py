@@ -56,7 +56,7 @@ class MembresView:
         addButton = ttk.Button(
             memberAddFrame,
             width=36,
-            text="Ajouter Un Membre",
+            text="Ajouter",
             command=lambda: self.validerAjoutMembre(tableMembres, self._entries.values())
         )
         addButton.pack(side='top', padx=5, pady=5)

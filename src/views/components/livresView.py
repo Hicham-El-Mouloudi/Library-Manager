@@ -65,7 +65,7 @@ class LivresView :
         addButton = ttk.Button(
             bookAddFrame,
             width=36,
-            text="Ajouter Un Livre",
+            text="Ajouter",
             command= lambda: self.validerAjoutLivre(tableLivres, self._entries.values())
         )
         addButton.pack(side='top', padx=5, pady=5)
