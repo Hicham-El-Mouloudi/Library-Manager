@@ -73,6 +73,14 @@
                 "annee": "1942",
                 "genre": "Roman",
                 "statut": "emprunté"
+            },
+            {
+                "ISBN": "1",
+                "titre": "L'Étranger",
+                "auteur": "Albert Camus",
+                "annee": "1942",
+                "genre": "Roman",
+                "statut": "emprunté"
             }
         ]
     }
