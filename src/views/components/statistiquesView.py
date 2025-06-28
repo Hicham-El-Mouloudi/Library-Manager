@@ -17,16 +17,24 @@ class StatistiquesView:
         self._frame = Frame(parent)
         self.initUI()
 
-    def initUI(self):
+    def Ilm(self):
         # This frame contains all our charts
-        containerFrame = Frame(self._frame, bg="lightblue", width=500)
+        outerFrame = Frame(self._frame, bg="lightblue")
+        outerFrame.pack(fill='both', expand=True, padx=10, pady=10)
+        # 
+        containerFrame = Frame(outerFrame, bg="lightgreen", width=500)
         containerFrame.pack(fill='both', expand=True, padx=10, pady=10)
+
         # # Add scrollbar
         canvas = Canvas(containerFrame)
         scrollbar = ttk.Scrollbar(containerFrame, orient="vertical", command=canvas.yview)
         canvas.configure(yscrollcommand=scrollbar.set)
         canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
+        # Setting up UI
+        self.initLivreParGenreDiagrammeCirculaire(containerFrame)
+        self.initHistogrammeTop10Auteur(containerFrame)
+        self.initCourbeTemporelle(containerFrame)
 
         return self._frame
         
