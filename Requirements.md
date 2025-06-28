@@ -1,7 +1,7 @@
 # Requirements techniques :
 
 ## Environnement
-- Python 3.x
+- Python 3.12.5
 
 ## Bibliothèques requises
 - `matplotlib` : visualisation
@@ -9,6 +9,7 @@
 - `tkinter` : interface graphique
 
 ## Architecture
+- Structure M/V (Model/Vue)
 - Programmation orientée objet (POO)
 - Gestion des exceptions (avec exceptions personnalisées)
 - Persistance des données : fichiers `.json`
@@ -34,11 +35,20 @@
 
 ## 4. Validation et Gestion des Erreurs
 - Saisie utilisateur vérifiée
-- Exceptions personnalisées :
-  - `LivreIndisponibleError`
-  - `QuotaEmpruntDepasseError`
-  - `MembreInexistantError`
-  - `LivreInexistantError`
+### Exceptions Personnalisées
+
+- **LivreIndisponibleError**  
+  Lancée lorsqu’on tente d’emprunter un livre déjà emprunté par un autre membre.
+
+- **LivreDisponibleError**  
+  Lancée lorsqu’on tente de retourner un livre qui est déjà disponible (non emprunté).
+
+- **QuotaEmpruntDepasseError**  
+  Lancée lorsqu’un membre essaie d’emprunter un livre alors qu’il a atteint son quota maximal d’emprunts.
+
+- **MembreInexistantError**  
+  Lancée lorsqu’on tente d’effectuer une opération sur un membre qui n’existe pas dans la base de données.
+
 
 ## 5. Tableau de bord statistique (Matplotlib)
 - Diagramme circulaire : % de livres par genre
