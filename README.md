@@ -6,15 +6,23 @@
 
 Cette application est un système complet de gestion de bibliothèque développé en Python 3.12.5. Elle propose une interface graphique moderne avec Tkinter, la gestion des livres et des membres, le suivi des emprunts/retours, la persistance des données au format JSON, et la visualisation de statistiques à l'aide de Matplotlib.
 
+L'application suit une **architecture Modèle-Vue (MV)** pour séparer les responsabilités et faciliter la maintenance.
+
+- **Modèle** : (`src/models/*`) gèrent les données, la logique métier et les fichiers JSON.
+- **Vue** : (`src/views/*`) s'occupe de l'interface Tkinter, capte les entrées et affiche les retours.
+- **Bibliotheque** : coordonne les modèles et les vues, applique les règles et quotas.
+
+Cette structure rend le code modulaire, testable et évolutif.
+
 ## Fonctionnalités
 
-* **Gestion des livres** : ajouter, supprimer, rechercher et lister les livres.
-* **Gestion des membres** : enregistrer, supprimer, rechercher et lister les membres.
+* **Gestion des livres** : ajouter, supprimer et lister les livres.
+* **Gestion des membres** : enregistrer, supprimer et lister les membres.
 * **Emprunts et retours** : emprunter et retourner des livres, gérer les quotas et l'historique des emprunts.
 * **Statistiques visuelles** :
 
   * Diagramme circulaire de répartition des livres par genre.
-  * Histogramme des auteurs les plus empruntés.
+  * Histogramme des auteurs les plus empruntés (livres empruntés le plus souvent).
   * Courbe d'activité des emprunts sur les 30 derniers jours.
 * **Persistance des données** : stockage des informations dans des fichiers JSON.
 * **Interface intuitive** : navigation via des onglets.
