@@ -19,7 +19,7 @@ class StatistiquesView:
 
     def initUI(self):
         # This frame contains all our charts
-        outerFrame = Frame(self._frame, bg="lightblue")
+        outerFrame = Frame(self._frame, bg="#caf0f8")
         outerFrame.pack(fill='both', expand=True, padx=10, pady=10)
         # Setting up UI
         self.initLivreParGenreDiagrammeCirculaire(outerFrame)

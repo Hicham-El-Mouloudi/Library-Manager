@@ -20,7 +20,7 @@ class MembresView:
 
     def initUI(self): 
         # ---------------- lister les membres
-        membersVisualisationFrame = Frame(self._frame, bg="lightblue", height=200)
+        membersVisualisationFrame = Frame(self._frame, bg="#caf0f8", height=200)
         membersVisualisationFrame.pack(fill='x', padx=10, pady=10)
         # adding a treeView to list members
         _columns = ['ID', 'Nom', 'Livres Empruntés']
