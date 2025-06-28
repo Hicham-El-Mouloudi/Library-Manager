@@ -21,7 +21,7 @@ class EmpruntsView:
 
     def initUI(self):
         outerFrame = Frame(self._frame, bg="white", height=100)
-        outerFrame.pack(fill='x', expand=True, padx=10, pady=10)
+        outerFrame.pack(fill='x', padx=10, pady=10)
         #-------------------------------- Borrowing books section
         # ------------------------------------------------------------------------------------------
         empruntsFrame = Frame(outerFrame, bg="white")
