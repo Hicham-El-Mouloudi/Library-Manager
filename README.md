@@ -45,10 +45,11 @@ python main.py
 
 ## Exemples d'utilisation
 
-* **Ajouter un livre** : onglet "Livres" → remplir les champs → cliquer sur "Ajouter Un Livre".
-* **Supprimer un membre** : onglet "Membres" → sélectionner un membre → cliquer sur "Supprimer".
+* **Ajouter un livre** : onglet "Livres" → remplir les champs → cliquer sur "Ajouter".
+* **Supprimer un ou plusieurs membres** : onglet "Membres" → sélectionner les membre → cliquer sur "Supprimer".
 * **Emprunter un livre** : onglet "Emprunts" → saisir l'ISBN et l'ID du membre → cliquer sur "Emprunter le livre".
 * **Visualiser les statistiques** : onglet "Statistiques" → les graphiques s'affichent automatiquement.
+> **Note :** Les statistiques seront actualisées lors du redémarrage de l'application.
 
 ## Structure du projet
 

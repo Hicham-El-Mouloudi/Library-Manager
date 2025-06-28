@@ -44,7 +44,7 @@ class LivresView :
         deleteFrame = Frame(self._frame, bg="white", height=100)
         deleteFrame.pack(fill='both', padx=10, pady=10)
         # the button to del -> binding it to delete the selected livres
-        deleteButton = ttk.Button(deleteFrame, width=36, text="Supprimer Les Elements Selectionnés", command= lambda : self.validerSuppression(tableLivres))
+        deleteButton = ttk.Button(deleteFrame, width=36, text=" Supprimer ", command= lambda : self.validerSuppression(tableLivres))
         deleteButton.pack()
 
 
@@ -66,7 +66,7 @@ class LivresView :
         addButton = ttk.Button(
             bookAddFrame,
             width=36,
-            text="Ajouter",
+            text=" Ajouter ",
             command= lambda: self.validerAjoutLivre(tableLivres, self._entries.values())
         )
         addButton.pack(side='top', padx=5, pady=5)
@@ -74,7 +74,7 @@ class LivresView :
         saveButton = ttk.Button(
             bookAddFrame,
             width=36,
-            text="Enregistrer",
+            text=" Enregistrer ",
             command=lambda: (self._model.saveData(), messagebox.showinfo("Livres", "Les livres ont été sauvegardés avec succès !"))
         )
         saveButton.pack(side='right', padx=5, pady=5)

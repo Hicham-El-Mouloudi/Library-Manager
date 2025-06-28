@@ -76,7 +76,7 @@ class EmpruntsView:
 
         #-------------------- Save button
         # ------------------------------------------------------------------------------------------
-        saveButton = ttk.Button(self._frame, text="Enregistrer", command=self.saveData)
+        saveButton = ttk.Button(self._frame, text=" Enregistrer ", command=self.saveData)
         saveButton.pack(pady=10)
 
         return self._frame
