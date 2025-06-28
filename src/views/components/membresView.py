@@ -35,18 +35,18 @@ class MembresView:
         tableMembres.pack(fill="both", expand=True)
 
         # ---------------- deleting a member
-        deleteFrame = Frame(self._frame, bg="lightgreen", height=100)
+        deleteFrame = Frame(self._frame, bg="white", height=100)
         deleteFrame.pack(fill='both', padx=10, pady=10)
         deleteButton = ttk.Button(deleteFrame, width=36, text="Supprimer Les Membres Selectionnés", command=lambda: self.validerSuppression(tableMembres))
         deleteButton.pack()
 
         # ---------------- adding a member
-        memberAddFrame = Frame(self._frame, bg="lightcoral")
+        memberAddFrame = Frame(self._frame, bg="white")
         memberAddFrame.pack(fill='both', padx=10, pady=10, expand=True)
         labels = ['ID', 'Nom']
         self._entries = {}
         for label in labels:
-            f = Frame(memberAddFrame, bg="lightcoral")
+            f = Frame(memberAddFrame, bg="white")
             f.pack(side='top', padx=5, pady=5)
             lbl = ttk.Label(f, text=label, width=10)
             lbl.pack(side='left', padx=5, pady=5)

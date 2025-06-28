@@ -20,7 +20,7 @@ class LivresView :
 
     def initUI(self):
         # ---------------- lister les livres
-        booksVisualisationFrame = Frame(self._frame, bg="#caf0f8", height=500)
+        booksVisualisationFrame = Frame(self._frame, bg="#caf0f8", height=400)
         booksVisualisationFrame.pack(fill='x', padx=10, pady=10)
         # # adding a treeView to list books
         _columns = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre', 'Statut']
