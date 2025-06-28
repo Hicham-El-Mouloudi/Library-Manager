@@ -117,10 +117,10 @@ class LivresModel:
 
     def saveData(self):
         # Convert the list of Livre objects to a list of dictionaries
-        self._livres = self.toJSON(self._livres)
+        desLivresAEnregistrer = self.toJSON(self._livres)
         # Save the books to "livres.json"
         with open('data/livres.json', 'w') as file:
-            dump(self._livres, file, indent=4)
+            dump(desLivresAEnregistrer, file, indent=4)
     
     def getLivresList(self) : 
         return self._livres

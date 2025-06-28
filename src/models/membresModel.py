@@ -126,10 +126,10 @@ class MembresModel:
 
     def saveData(self):
         # Convert the list of Membre objects to a list of dictionaries
-        self._membres = self.toJSON(self._membres)
+        desMembresAEnregistrer = self.toJSON(self._membres)
         # Save the members to "membres.json"
         with open('data/membres.json', 'w', encoding="utf-8") as file:
-            dump(self._membres, file, ensure_ascii=False, indent=4)
+            dump(desMembresAEnregistrer, file, ensure_ascii=False, indent=4)
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------
