@@ -45,10 +45,11 @@ class StatistiquesView:
     def initHistogrammeTop10Auteur(self, parent):
         authors, counts = self._model.getHistogrammeData()
         fig, axe = plt.subplots()
-        axe.bar(authors, counts, color='skyblue')
+        axe.bar([name.replace(" ", "\n") for name in authors], counts, color='skyblue')
         axe.set_title("Top 10 des auteurs les plus populaires")
         axe.set_xlabel("Auteur")
         axe.set_ylabel("Nombre d'emprunts")
+        axe.tick_params(axis='x', labelrotation=90)
         # 
         canvas = FigureCanvasTkAgg(fig, parent)
         canvas.draw()
