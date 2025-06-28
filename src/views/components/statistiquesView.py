@@ -1,5 +1,7 @@
 from tkinter import *
+from tkinter import ttk
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 # custom libs
 from src.models.statisticsModel import StatisticsModel
 
@@ -16,29 +18,51 @@ class StatistiquesView:
         self.initUI()
 
     def initUI(self):
+        # This frame contains all our charts
+        containerFrame = Frame(self._frame, bg="lightblue", width=500)
+        containerFrame.pack(fill='both', expand=True, padx=10, pady=10)
+        # # Add scrollbar
+        canvas = Canvas(containerFrame)
+        scrollbar = ttk.Scrollbar(containerFrame, orient="vertical", command=canvas.yview)
+        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
         return self._frame
         
     def getUI(self):
         return self._frame
     
-    def getLivreParGenreDiagrammeCirculaire(self) : 
+    def initLivreParGenreDiagrammeCirculaire(self, parent) : 
         labels, sizes = stats_model.getPieDiagrammeData()
         fig, axe = plt.subplots()
         axe.pie(sizes, labels=labels, autopct='%1.1f%%')
         axe.set_title("Répartition des livres par genre")
+        # 
+        canvas = FigureCanvasTkAgg(fig, parent)
+        canvas.draw()
+        canvas.get_tk_widget().pack(fill="both", expand=True)
 
-    def getHistogrammeTop10Auteur(self):
+    def initHistogrammeTop10Auteur(self, parent):
         authors, counts = self._model.getHistogrammeData()
         fig, axe = plt.subplots()
         axe.bar(authors, counts, color='skyblue')
         axe.set_title("Top 10 des auteurs les plus populaires")
         axe.set_xlabel("Auteur")
         axe.set_ylabel("Nombre d'emprunts")
+        # 
+        canvas = FigureCanvasTkAgg(fig, parent)
+        canvas.draw()
+        canvas.get_tk_widget().pack(fill="both", expand=True)
 
-    def getCourbeTemporelle(self):
+    def initCourbeTemporelle(self, parent):
         activity = self._model.getTimeDiagrammeData()
         fig, axe = plt.subplots()
         axe.plot(range(1, 31), activity, marker='o')
         axe.set_title("Activité des emprunts (30 derniers jours)")
         axe.set_xlabel("Jours (du passé à aujourd'hui)")
         axe.set_ylabel("Nombre d'emprunts")
+        # 
+        canvas = FigureCanvasTkAgg(fig, parent)
+        canvas.draw()
+        canvas.get_tk_widget().pack(fill="both", expand=True)
