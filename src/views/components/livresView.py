@@ -20,8 +20,8 @@ class LivresView :
 
     def initUI(self):
         # ---------------- lister les livres
-        booksVisualisationFrame = Frame(self._frame, bg="#caf0f8", height=400)
-        booksVisualisationFrame.pack(fill='x', padx=10, pady=10)
+        booksVisualisationFrame = Frame(self._frame, bg="#caf0f8")
+        booksVisualisationFrame.pack(fill='both', expand=True, padx=10, pady=10)
         # # adding a treeView to list books
         _columns = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre', 'Statut']
         tableLivres = ttk.Treeview(booksVisualisationFrame, columns=_columns, show='headings')

@@ -20,8 +20,8 @@ class MembresView:
 
     def initUI(self): 
         # ---------------- lister les membres
-        membersVisualisationFrame = Frame(self._frame, bg="#caf0f8", height=200)
-        membersVisualisationFrame.pack(fill='x', padx=10, pady=10)
+        membersVisualisationFrame = Frame(self._frame, bg="#caf0f8")
+        membersVisualisationFrame.pack(fill='both', expand=True, padx=10, pady=10)
         # adding a treeView to list members
         _columns = ['ID', 'Nom', 'Livres Empruntés']
         tableMembres = ttk.Treeview(membersVisualisationFrame, columns=_columns, show='headings')
