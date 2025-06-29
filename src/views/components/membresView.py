@@ -18,6 +18,8 @@ class MembresView:
         # the container frame for all UI components of this view
         self._frame = Frame(parent)
         self.initUI()
+        # TreeView that lists all members
+        self.tableMembres = None
 
     def initUI(self): 
         # ---------------- lister les membres
@@ -25,20 +27,20 @@ class MembresView:
         membersVisualisationFrame.pack(fill='both', expand=True, padx=10, pady=10)
         # adding a treeView to list members
         _columns = ['ID', 'Nom', 'Livres Empruntés']
-        tableMembres = ttk.Treeview(membersVisualisationFrame, columns=_columns, show='headings')
+        self.tableMembres = ttk.Treeview(membersVisualisationFrame, columns=_columns, show='headings')
         for clmn in _columns:
-            tableMembres.heading(clmn, text=clmn)
-            tableMembres.column(clmn, width=150)
-        self.afficherMembres(tableMembres)
-        scrollbar = ttk.Scrollbar(membersVisualisationFrame, orient="vertical", command=tableMembres.yview)
-        tableMembres.configure(yscrollcommand=scrollbar.set)
+            self.tableMembres.heading(clmn, text=clmn)
+            self.tableMembres.column(clmn, width=150)
+        self.afficherMembres()
+        scrollbar = ttk.Scrollbar(membersVisualisationFrame, orient="vertical", command=self.tableMembres.yview)
+        self.tableMembres.configure(yscrollcommand=scrollbar.set)
         scrollbar.pack(side="right", fill="y")
-        tableMembres.pack(fill="both", expand=True)
+        self.tableMembres.pack(fill="both", expand=True)
 
         # ---------------- deleting a member
         deleteFrame = Frame(self._frame, bg="white", height=100)
         deleteFrame.pack(fill='both', padx=10, pady=10)
-        deleteButton = ttk.Button(deleteFrame, width=36, text=" Supprimer ", command=lambda: self.validerSuppression(tableMembres))
+        deleteButton = ttk.Button(deleteFrame, width=36, text=" Supprimer ", command=lambda: self.validerSuppression())
         deleteButton.pack()
 
         # ---------------- adding a member
@@ -58,7 +60,7 @@ class MembresView:
             memberAddFrame,
             width=36,
             text=" Ajouter ",
-            command=lambda: self.validerAjoutMembre(tableMembres, self._entries.values())
+            command=lambda: self.validerAjoutMembre(self._entries.values())
         )
         addButton.pack(side='top', padx=5, pady=5)
         saveButton = ttk.Button(
@@ -73,27 +75,26 @@ class MembresView:
     def getUI(self):
         return self._frame
 
-    def afficherMembres(self, tableMembres):
-        tableMembres.set_children("") # clear the table first
+    def afficherMembres(self):
+        self.tableMembres.set_children("") # clear the table first
         for membre in self._model.listerMembres():
             # Format the list of borrowed books as a comma-separated string
-            tableMembres.insert("", "end", values=membre.getValuesList())
+            self.tableMembres.insert("", "end", values=membre.getValuesList())
 
-    def validerSuppression(self, tableMembres):
-        selected = tableMembres.selection()  # liste des ID des lignes selectionnées
+    def validerSuppression(self):
+        selected = self.tableMembres.selection()  # liste des ID des lignes selectionnées
         if len(selected) == 0:
             messagebox.showerror("Erreur", "Vous devez selectionner des membres à supprimer")
             return
         response = messagebox.askyesno("Confirmation De Suppression", "Est-ce que vous voulez vraiment supprimer les membres selectionnés ?")
         if response:
-            indicesASupprimer = [tableMembres.index(indx) for indx in selected] # obtenir les indices des lignes selectionées, à partir des ID obtnue par 'selected'
+            indicesASupprimer = [self.tableMembres.index(indx) for indx in selected] # obtenir les indices des lignes selectionées, à partir des ID obtnue par 'selected'
             self._model.deleteMembres(indicesASupprimer)
-            self.afficherMembres(tableMembres) # re-afficher apres suppression 
+            self.afficherMembres() # re-afficher apres suppression 
         # sinon ignorer
 
     #entries : liste of Entry widgets
-    #tableMembres : Treeview widget
-    def validerAjoutMembre(self, tableMembres, entries):
+    def validerAjoutMembre(self, entries):
         if any(entry.get() == "" for entry in self._entries.values()):
             messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
             return
@@ -103,4 +104,4 @@ class MembresView:
         # vider les champs
         for entry in entries:
             entry.delete(0, "end")
-        self.afficherMembres(tableMembres)  # re-afficher apres ajout
+        self.afficherMembres()  # re-afficher apres ajout

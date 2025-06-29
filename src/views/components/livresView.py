@@ -18,6 +18,8 @@ class LivresView :
         # the container frame for all UI components of this view
         self._frame = Frame(parent)
         self.initUI()
+        # TreeView listing books
+        self.tableLivres = None
 
     def initUI(self):
         # ---------------- lister les livres
@@ -25,26 +27,26 @@ class LivresView :
         booksVisualisationFrame.pack(fill='both', expand=True, padx=10, pady=10)
         # # adding a treeView to list books
         _columns = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre', 'Statut']
-        tableLivres = ttk.Treeview(booksVisualisationFrame, columns=_columns, show='headings')
+        self.tableLivres = ttk.Treeview(booksVisualisationFrame, columns=_columns, show='headings')
         # # # config columns
         for clmn in _columns :
-            tableLivres.heading(clmn, text=clmn) # adding labels to columns
-            tableLivres.column(clmn, width=100) # confihuring each column
+            self.tableLivres.heading(clmn, text=clmn) # adding labels to columns
+            self.tableLivres.column(clmn, width=100) # confihuring each column
         # # # adding books to the treeView
-        self.afficherLivres(tableLivres)
+        self.afficherLivres()
         # # # # Add scrollbar
-        scrollbar = ttk.Scrollbar(booksVisualisationFrame, orient="vertical", command=tableLivres.yview)
-        tableLivres.configure(yscrollcommand=scrollbar.set)
+        scrollbar = ttk.Scrollbar(booksVisualisationFrame, orient="vertical", command=self.tableLivres.yview)
+        self.tableLivres.configure(yscrollcommand=scrollbar.set)
         scrollbar.pack(side="right", fill="y")
         # # packing table des livres
-        tableLivres.pack(fill="both", expand=True)
+        self.tableLivres.pack(fill="both", expand=True)
 
 
         # ---------------- deleting a book
         deleteFrame = Frame(self._frame, bg="white", height=100)
         deleteFrame.pack(fill='both', padx=10, pady=10)
         # the button to del -> binding it to delete the selected livres
-        deleteButton = ttk.Button(deleteFrame, width=36, text=" Supprimer ", command= lambda : self.validerSuppression(tableLivres))
+        deleteButton = ttk.Button(deleteFrame, width=36, text=" Supprimer ", command= lambda : self.validerSuppression())
         deleteButton.pack()
 
 
@@ -67,7 +69,7 @@ class LivresView :
             bookAddFrame,
             width=36,
             text=" Ajouter ",
-            command= lambda: self.validerAjoutLivre(tableLivres, self._entries.values())
+            command= lambda: self.validerAjoutLivre(self._entries.values())
         )
         addButton.pack(side='top', padx=5, pady=5)
         # # saving the books to the JSON file
@@ -84,25 +86,25 @@ class LivresView :
         return self._frame
     
     # 
-    def afficherLivres(self, tableLivres):
-        tableLivres.set_children("") # clear the table first
+    def afficherLivres(self):
+        self.tableLivres.set_children("") # clear the table first
         for livre in self._model.listerLivres() : 
-            tableLivres.insert("", "end", values = livre.getValuesList())
+            self.tableLivres.insert("", "end", values = livre.getValuesList())
 
-    def validerSuppression(self,tableLivres) :
-        selected = tableLivres.selection() # liste des ID des lignes selectionnée
+    def validerSuppression(self) :
+        selected = self.tableLivres.selection() # liste des ID des lignes selectionnée
         if len(selected) == 0 : # the user does not select any -> show alert
             messagebox.showerror("Erreur","Vous devez selectionner des entrées a supprimer")
             return
         #verifier si l'utilisateur veut vraiment la supprimmer
         response = messagebox.askyesno("Confirmation De Suppression", "Est-ce que vous voulez vraiment supprimer les livres selectionnés ?")
         if response : 
-            lesIndiceDesLivreASupprimer = [tableLivres.index(indx) for indx in selected] # obtenir les indices des lignes selectionées, à partir des ID obtnue par 'selected'
+            lesIndiceDesLivreASupprimer = [self.tableLivres.index(indx) for indx in selected] # obtenir les indices des lignes selectionées, à partir des ID obtnue par 'selected'
             self._model.deleteLivres(lesIndiceDesLivreASupprimer)
-            self.afficherLivres(tableLivres) # re-afficher apres suppression 
+            self.afficherLivres() # re-afficher apres suppression 
         # sinon ignoreer
 
-    def validerAjoutLivre(self, tableLivres, _entries):
+    def validerAjoutLivre(self, _entries):
         if any(entry.get() == "" for entry in self._entries.values()):
             messagebox.showerror("Erreur", "Tous les champs doivent être remplis")
             return
@@ -117,4 +119,4 @@ class LivresView :
         # vider les champs
         for entry in _entries:
             entry.delete(0, "end")
-        self.afficherLivres(tableLivres)  # re-afficher apres ajout
+        self.afficherLivres()  # re-afficher apres ajout

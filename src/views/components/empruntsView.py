@@ -13,7 +13,9 @@ from models.historiqueModel import LivreIndisponibleError, LivreDisponibleError,
 
 
 class EmpruntsView:
-    def __init__(self, parent, bibliotheque): 
+    def __init__(self, parent, bibliotheque, livresView, membresView): 
+        self.livresView = livresView
+        self.membresView = membresView
         # Linking the model to the view
         self._model = bibliotheque.getHistoriqueModel()
         self._model.loadData()  # Load the data from the JSON file 'historique.json'
@@ -88,6 +90,9 @@ class EmpruntsView:
         try : 
             self._model.emprunterLivre(isbn, membreId)
             messagebox.showinfo("Succès", "Livre emprunté avec succès.")
+            # update ui of books and members
+            self.livresView.afficherLivres()
+            self.membresView.afficherMembres()
         except LivreInexistantError as e : 
             messagebox.showerror("Erreur", str(e))
         except MembreInexistantError as e :
@@ -102,6 +107,9 @@ class EmpruntsView:
         try : 
             self._model.retournerLivre(isbn, membreId)
             messagebox.showinfo("Succès", "Livre retourné avec succès.")
+            # update ui of books and members
+            self.livresView.afficherLivres()
+            self.membresView.afficherMembres()
         except LivreInexistantError as e : 
             messagebox.showerror("Erreur", str(e))
         except MembreInexistantError as e :
