@@ -17,22 +17,22 @@ class MembresView:
         self._model.loadData()
         # the container frame for all UI components of this view
         self._frame = Frame(parent)
-        self.initUI()
         # TreeView that lists all members
-        self.tableMembres = None
+        # adding a treeView to list members
+        self.membersVisualisationFrame = Frame(self._frame, bg="#caf0f8")
+        self._columns = ['ID', 'Nom', 'Livres Empruntés']
+        self.tableMembres = ttk.Treeview(self.membersVisualisationFrame, columns=self._columns, show='headings')
+        # 
+        self.initUI()
 
     def initUI(self): 
         # ---------------- lister les membres
-        membersVisualisationFrame = Frame(self._frame, bg="#caf0f8")
-        membersVisualisationFrame.pack(fill='both', expand=True, padx=10, pady=10)
-        # adding a treeView to list members
-        _columns = ['ID', 'Nom', 'Livres Empruntés']
-        self.tableMembres = ttk.Treeview(membersVisualisationFrame, columns=_columns, show='headings')
-        for clmn in _columns:
+        self.membersVisualisationFrame.pack(fill='both', expand=True, padx=10, pady=10)
+        for clmn in self._columns:
             self.tableMembres.heading(clmn, text=clmn)
             self.tableMembres.column(clmn, width=150)
         self.afficherMembres()
-        scrollbar = ttk.Scrollbar(membersVisualisationFrame, orient="vertical", command=self.tableMembres.yview)
+        scrollbar = ttk.Scrollbar(self.membersVisualisationFrame, orient="vertical", command=self.tableMembres.yview)
         self.tableMembres.configure(yscrollcommand=scrollbar.set)
         scrollbar.pack(side="right", fill="y")
         self.tableMembres.pack(fill="both", expand=True)

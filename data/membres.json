@@ -4,7 +4,7 @@
         "nom": "Dupont Alice",
         "livresEmpruntes": [
             {
-                "ISBN": "978-0140449136",
+                "ISBN": "1",
                 "titre": "L'Étranger",
                 "auteur": "Albert Camus",
                 "annee": "1942",
@@ -12,7 +12,7 @@
                 "statut": "emprunté"
             },
             {
-                "ISBN": "978-2070368228",
+                "ISBN": "2",
                 "titre": "Le Petit Prince",
                 "auteur": "Antoine de Saint-Exupéry",
                 "annee": "1943",
@@ -26,7 +26,7 @@
         "nom": "Martin Jean",
         "livresEmpruntes": [
             {
-                "ISBN": "978-2253002023",
+                "ISBN": "3",
                 "titre": "Les Misérables",
                 "auteur": "Victor Hugo",
                 "annee": "1862",
@@ -45,7 +45,7 @@
         "nom": "Petit Luc",
         "livresEmpruntes": [
             {
-                "ISBN": "978-2070413119",
+                "ISBN": "4",
                 "titre": "Madame Bovary",
                 "auteur": "Gustave Flaubert",
                 "annee": "1857",
@@ -59,18 +59,10 @@
         "nom": "Robert Emma",
         "livresEmpruntes": [
             {
-                "ISBN": "978-2253083473",
+                "ISBN": "5",
                 "titre": "Germinal",
                 "auteur": "Émile Zola",
                 "annee": "1885",
-                "genre": "Roman",
-                "statut": "emprunté"
-            },
-            {
-                "ISBN": "978-0140449136",
-                "titre": "L'Étranger",
-                "auteur": "Albert Camus",
-                "annee": "1942",
                 "genre": "Roman",
                 "statut": "emprunté"
             },

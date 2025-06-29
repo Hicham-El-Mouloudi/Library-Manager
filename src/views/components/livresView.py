@@ -17,25 +17,25 @@ class LivresView :
         self._model.loadData() # Load the data from the JSON file 'livres.json'
         # the container frame for all UI components of this view
         self._frame = Frame(parent)
-        self.initUI()
         # TreeView listing books
-        self.tableLivres = None
+        # # adding a treeView to list books
+        self.booksVisualisationFrame = Frame(self._frame, bg="#caf0f8")
+        self._columns = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre', 'Statut']
+        self.tableLivres = ttk.Treeview(self.booksVisualisationFrame, columns=self._columns, show='headings')
+        # 
+        self.initUI()
 
     def initUI(self):
         # ---------------- lister les livres
-        booksVisualisationFrame = Frame(self._frame, bg="#caf0f8")
-        booksVisualisationFrame.pack(fill='both', expand=True, padx=10, pady=10)
-        # # adding a treeView to list books
-        _columns = ['ISBN', 'Titre', 'Auteur', 'Année', 'Genre', 'Statut']
-        self.tableLivres = ttk.Treeview(booksVisualisationFrame, columns=_columns, show='headings')
+        self.booksVisualisationFrame.pack(fill='both', expand=True, padx=10, pady=10)
         # # # config columns
-        for clmn in _columns :
+        for clmn in self._columns :
             self.tableLivres.heading(clmn, text=clmn) # adding labels to columns
             self.tableLivres.column(clmn, width=100) # confihuring each column
         # # # adding books to the treeView
         self.afficherLivres()
         # # # # Add scrollbar
-        scrollbar = ttk.Scrollbar(booksVisualisationFrame, orient="vertical", command=self.tableLivres.yview)
+        scrollbar = ttk.Scrollbar(self.booksVisualisationFrame, orient="vertical", command=self.tableLivres.yview)
         self.tableLivres.configure(yscrollcommand=scrollbar.set)
         scrollbar.pack(side="right", fill="y")
         # # packing table des livres

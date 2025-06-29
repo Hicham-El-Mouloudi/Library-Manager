@@ -1,23 +1,23 @@
 [
     {
         "ISBN": "1",
-        "titre": "L'\u00c9tranger",
+        "titre": "L'Étranger",
         "auteur": "Albert Camus",
         "annee": "1942",
         "genre": "Roman",
-        "statut": "emprunt\u00e9"
+        "statut": "emprunté"
     },
     {
         "ISBN": "2",
         "titre": "Le Petit Prince",
-        "auteur": "Antoine de Saint-Exup\u00e9ry",
+        "auteur": "Antoine de Saint-Exupéry",
         "annee": "1943",
         "genre": "Conte",
-        "statut": "emprunt\u00e9"
+        "statut": "emprunté"
     },
     {
         "ISBN": "3",
-        "titre": "Les Mis\u00e9rables",
+        "titre": "Les Misérables",
         "auteur": "Victor Hugo",
         "annee": "1862",
         "genre": "Roman historique",
@@ -34,81 +34,9 @@
     {
         "ISBN": "5",
         "titre": "Germinal",
-        "auteur": "\u00c9mile Zola",
+        "auteur": "Émile Zola",
         "annee": "1885",
         "genre": "Roman",
-        "statut": "emprunt\u00e9"
-    },
-    {
-        "ISBN": "6",
-        "titre": "L'\u00c9tranger",
-        "auteur": "Albert Camus",
-        "annee": "1942",
-        "genre": "Roman",
-        "statut": "disponible"
-    },
-    {
-        "ISBN": "7",
-        "titre": "Le Petit Prince",
-        "auteur": "Antoine de Saint-Exup\u00e9ry",
-        "annee": "1943",
-        "genre": "Conte",
-        "statut": "emprunt\u00e9"
-    },
-    {
-        "ISBN": "8",
-        "titre": "Les Mis\u00e9rables",
-        "auteur": "Victor Hugo",
-        "annee": "1862",
-        "genre": "Roman historique",
-        "statut": "disponible"
-    },
-    {
-        "ISBN": "9",
-        "titre": "Madame Bovary",
-        "auteur": "Gustave Flaubert",
-        "annee": "1857",
-        "genre": "Roman",
-        "statut": "disponible"
-    },
-    {
-        "ISBN": "10",
-        "titre": "Germinal",
-        "auteur": "\u00c9mile Zola",
-        "annee": "1885",
-        "genre": "Roman",
-        "statut": "emprunt\u00e9"
-    },
-    {
-        "ISBN": "11",
-        "titre": "Le Petit Prince",
-        "auteur": "Antoine de Saint-Exup\u00e9ry",
-        "annee": "1943",
-        "genre": "Conte",
-        "statut": "emprunt\u00e9"
-    },
-    {
-        "ISBN": "12",
-        "titre": "Les Mis\u00e9rables",
-        "auteur": "Victor Hugo",
-        "annee": "1862",
-        "genre": "Roman historique",
-        "statut": "disponible"
-    },
-    {
-        "ISBN": "13",
-        "titre": "Madame Bovary",
-        "auteur": "Gustave Flaubert",
-        "annee": "1857",
-        "genre": "Roman",
-        "statut": "disponible"
-    },
-    {
-        "ISBN": "14",
-        "titre": "Germinal",
-        "auteur": "\u00c9mile Zola",
-        "annee": "1885",
-        "genre": "Roman",
-        "statut": "emprunt\u00e9"
+        "statut": "emprunté"
     }
 ]
